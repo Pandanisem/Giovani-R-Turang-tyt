@@ -16,8 +16,6 @@
             color: #222222;
             padding-bottom: 3rem;
         }
-
-        /* Top Bar */
         .top-bar {
             background-color: #9e000e;
             color: #ffffff;
@@ -34,8 +32,6 @@
             text-decoration: none;
             font-weight: bold;
         }
-
-        /* Header */
         header {
             background: linear-gradient(135deg, #d90416 0%, #a3000e 100%);
             color: #ffffff;
@@ -63,8 +59,6 @@
             font-size: 0.95rem;
             opacity: 0.95;
         }
-
-        /* Kontainer Utama */
         .container {
             max-width: 880px;
             margin: 0 auto;
@@ -91,8 +85,6 @@
             padding-bottom: 5px;
             border-bottom: 2px solid #d90416;
         }
-
-        /* Item List Mobil (Tingkat 1) */
         .car-item {
             background: #ffffff;
             border-radius: 10px;
@@ -107,7 +99,7 @@
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            transition: background 0.2s;
+            user-select: none;
         }
         .car-header:hover {
             background-color: #fff5f5;
@@ -117,12 +109,19 @@
             align-items: center;
             gap: 14px;
         }
-        .car-thumb {
+        .car-badge-box {
             width: 78px;
-            height: 50px;
-            object-fit: cover;
+            height: 48px;
+            background: #d90416;
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             border-radius: 6px;
-            background: #eee;
+            padding: 4px;
             flex-shrink: 0;
         }
         .car-cat {
@@ -149,8 +148,6 @@
         .car-item.open .car-arrow {
             transform: rotate(180deg);
         }
-
-        /* Daftar Jenis / Varian (Tingkat 2) */
         .variant-list {
             display: none;
             background-color: #fafafa;
@@ -197,8 +194,6 @@
             font-size: 0.9rem;
             white-space: nowrap;
         }
-
-        /* Detail Spesifikasi (Tingkat 3) */
         .spec-box {
             display: none;
             padding: 14px;
@@ -238,7 +233,6 @@
         .btn-wa:hover {
             background-color: #1ebe5d;
         }
-
         footer {
             text-align: center;
             margin-top: 2.5rem;
@@ -252,57 +246,57 @@
 
     <div class="top-bar">
         <span>Dealer Resmi Toyota - Kotamobagu, Sulawesi Utara</span>
-        <a href="https://wa.me" target="_blank">Hubungi Sales: 0812-3456-7890</a>
+        <a id="topWa" href="#" target="_blank">Hubungi Sales WhatsApp</a>
     </div>
 
     <header>
         <div class="dealer-badge">PT Hasjrat Abadi Kotamobagu</div>
         <h1>Katalog Lengkap Mobil Toyota</h1>
-        <p>Klik nama mobil untuk melihat tipe, lalu klik tipenya untuk membuka spesifikasi & harga.</p>
+        <p>Klik nama mobil untuk membuka semua pilihan tipe, lalu klik tipenya untuk melihat spesifikasi.</p>
     </header>
 
     <div class="container">
-        <div class="guide-text">👇 Pilih model mobil Toyota di bawah ini:</div>
+        <div class="guide-text">👇 Pilih salah satu mobil Toyota di bawah ini:</div>
+        <div id="katalogContainer"></div>
+    </div>
 
-        <div class="section-label">1. Hatchback & City Car</div>
+    <footer>
+        &copy; 2026 PT Hasjrat Abadi Kotamobagu. Estimasi harga OTR dapat berubah sewaktu-waktu.
+    </footer>
 
-        <div class="car-item">
-            <div class="car-header" onclick="toggleCar(this)">
-                <div class="car-header-left">
-                    <img class="car-thumb" src="https://placehold.co" alt="Agya">
-                    <div>
-                        <div class="car-cat">Hatchback</div>
-                        <div class="car-name">Toyota New Agya</div>
-                        <div class="car-sub">Tersedia 4 Tipe (E, G, Stylix, GR Sport)</div>
-                    </div>
-                </div>
-                <div class="car-arrow">▼</div>
-            </div>
-            <div class="variant-list">
-                <div class="variant-prompt">Pilih jenis/tipe Toyota New Agya:</div>
-                <div class="variant-card">
-                    <button class="variant-btn" onclick="toggleSpec(this)">
-                        <span>Agya 1.2 E M/T</span>
-                        <span class="variant-price-tag">Rp 185.000.000 ▾</span>
-                    </button>
-                    <div class="spec-box">
-                        <table class="spec-table">
-                            <tr><td>Estimasi OTR</td><td><strong>Rp 185.000.000</strong></td></tr>
-                            <tr><td>Mesin</td><td>1.198 cc, 3-Silinder, Dual VVT-i</td></tr>
-                            <tr><td>Transmisi</td><td>Manual 5-Percepatan</td></tr>
-                            <tr><td>Kapasitas</td><td>5 Penumpang</td></tr>
-                            <tr><td>Fitur Utama</td><td>LED Headlamp, Digital A/C, Dual Airbags, ABS+EBD</td></tr>
-                        </table>
-                        <a class="btn-wa" href="https://wa.me?text=Halo%20Hasjrat%20Kotamobagu,%20info%20Toyota%20Agya%201.2%20E%20MT" target="_blank">Tanya Promo & Kredit via WhatsApp</a>
-                    </div>
-                </div>
-                <div class="variant-card">
-                    <button class="variant-btn" onclick="toggleSpec(this)">
-                        <span>Agya 1.2 G CVT</span>
-                        <span class="variant-price-tag">Rp 208.000.000 ▾</span>
-                    </button>
-                    <div class="spec-box">
-                        <table class="spec-table">
-                            <tr><td>Estimasi OTR</td><td><strong>Rp 208.000.000</strong></td></tr>
-                            <tr><td>Mesin</td><td>1.198 cc, 3-Silinder, Dual VVT-i</td></tr>
-                            <tr><td>Transmisi</td><td>CVT dengan Paddle Shift</td></tr>
+    <script>
+        // GANTI NOMOR WHATSAPP SALES DI BAWAH INI (awali dengan 62)
+        const NOMOR_WA = "6281234567890";
+        document.getElementById("topWa").href = "https://wa.me" + NOMOR_WA;
+
+        const dataToyota = [
+            {
+                kategori: "1. Hatchback & City Car",
+                mobil: [
+                    {
+                        nama: "Toyota New Agya",
+                        kode: "AGYA",
+                        tipe: [
+                            { nama: "Agya 1.2 E M/T", harga: "Rp 185.000.000", mesin: "1.198 cc 3-Silinder Dual VVT-i", trans: "Manual 5-Speed", kursi: "5 Penumpang", fitur: "LED Headlamp, Digital A/C, Dual Airbags, ABS+EBD" },
+                            { nama: "Agya 1.2 G CVT", harga: "Rp 208.000.000", mesin: "1.198 cc 3-Silinder Dual VVT-i", trans: "CVT + Paddle Shift", kursi: "5 Penumpang", fitur: "Smart Entry, Push Start Button, Head Unit 7 Inci" },
+                            { nama: "Agya 1.2 Stylix G CVT", harga: "Rp 213.000.000", mesin: "1.198 cc 3-Silinder Dual VVT-i", trans: "CVT + Paddle Shift", kursi: "5 Penumpang", fitur: "Aero Skirt Package, Follow Me Home Light, Power Mode" },
+                            { nama: "Agya 1.2 GR Sport CVT", harga: "Rp 268.000.000", mesin: "1.198 cc 3-Silinder Dual VVT-i", trans: "CVT + Paddle Shift", kursi: "5 Penumpang", fitur: "GR Aero Kit, GR Tuned Suspension, Wireless Charger, Velg 15\"" }
+                        ]
+                    },
+                    {
+                        nama: "Toyota New Yaris GR Sport",
+                        kode: "YARIS",
+                        tipe: [
+                            { nama: "Yaris 1.5 S CVT GR Sport (3 Airbags)", harga: "Rp 358.000.000", mesin: "1.496 cc 4-Silinder Dual VVT-i", trans: "CVT 7-Speed", kursi: "5 Penumpang", fitur: "GR Body Kit, Head Unit 9\", Panoramic View Monitor" },
+                            { nama: "Yaris 1.5 S CVT GR Sport (7 Airbags)", harga: "Rp 365.000.000", mesin: "1.496 cc 4-Silinder Dual VVT-i", trans: "CVT 7-Speed", kursi: "5 Penumpang", fitur: "7 Airbags, Half Leather Seat, Paddle Shift, VSC & HSA" }
+                        ]
+                    }
+                ]
+            },
+            {
+                kategori: "2. MPV & Mobil Keluarga",
+                mobil: [
+                    {
+                        nama: "Toyota New Calya",
+                        kode: "CALYA",
+                        tipe: [
