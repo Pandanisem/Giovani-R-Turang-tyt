@@ -7,21 +7,21 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,sans-serif}
 body{background:#f4f5f7;color:#222;padding-bottom:3rem}
-.top{background:#9e000e;color:#fff;font-size:.85rem;padding:8px 1.2rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.top a{color:#fff;text-decoration:none;font-weight:700}
+.top{background:#9e000e;color:#fff;font-size:.85rem;padding:10px 1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.top a{background:#25d366;color:#fff;text-decoration:none;font-weight:700;padding:5px 12px;border-radius:20px;font-size:.82rem}
+.top a:hover{background:#1ebe5d}
 header{background:linear-gradient(135deg,#d90416,#a3000e);color:#fff;text-align:center;padding:2rem 1rem;margin-bottom:1.5rem}
 .badge{display:inline-block;background:#fff;color:#d90416;padding:4px 14px;border-radius:20px;font-weight:800;font-size:.82rem;margin-bottom:8px;text-transform:uppercase}
 header h1{font-size:1.8rem;margin-bottom:4px}
 header p{font-size:.92rem;opacity:.95}
 .box{max-width:850px;margin:0 auto;padding:0 1rem}
-.hint{text-align:center;background:#fff;padding:10px;border-radius:8px;border:1px solid #e0e0e0;font-weight:600;font-size:.92rem;margin-bottom:1rem}
 .cat{font-size:.95rem;font-weight:800;color:#d90416;text-transform:uppercase;margin:1.5rem 0 .7rem;padding-bottom:4px;border-bottom:2px solid #d90416}
 details.c{background:#fff;border-radius:10px;margin-bottom:10px;box-shadow:0 2px 6px rgba(0,0,0,.05);border-left:5px solid #d90416;overflow:hidden}
-details.c>summary{list-style:none;padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:1.08rem}
+details.c>summary{list-style:none;padding:.85rem 1.1rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:1.05rem}
 details.c>summary::-webkit-details-marker{display:none}
 details.c>summary:hover{background:#fff5f5}
-.cl{display:flex;align-items:center;gap:12px}
-.tg{background:#d90416;color:#fff;font-size:.72rem;font-weight:800;padding:6px 8px;border-radius:6px;min-width:68px;text-align:center}
+.cl{display:flex;align-items:center;gap:14px}
+.car-photo{width:95px;height:62px;object-fit:cover;border-radius:6px;background:#eee;border:1px solid #e5e5e5;flex-shrink:0}
 .sb{display:block;font-size:.8rem;font-weight:400;color:#666;margin-top:2px}
 .ar{color:#d90416;font-size:.95rem}
 .vs{background:#fafafa;border-top:1px solid #eee;padding:.9rem 1.1rem}
@@ -41,107 +41,226 @@ footer{text-align:center;margin-top:2.5rem;color:#777;font-size:.84rem;padding:0
 </style>
 </head>
 <body>
-<div class="top"><span>Dealer Resmi Toyota - Kotamobagu, Sulawesi Utara</span><a id="topWa" href="#" target="_blank">Hubungi Sales WhatsApp</a></div>
-<header><div class="badge">PT Hasjrat Abadi Kotamobagu</div><h1>Katalog Lengkap Mobil Toyota</h1><p>Klik nama mobil untuk melihat pilihan tipe, lalu klik tipenya untuk membuka spesifikasi.</p></header>
-<div class="box"><div class="hint">👇 Pilih salah satu mobil Toyota di bawah ini:</div><div id="list"></div></div>
+<div class="top">
+  <span>Dealer Resmi Toyota - Kotamobagu, Sulawesi Utara</span>
+  <a href="https://wa.me" target="_blank">Hubungi Sales WhatsApp</a>
+</div>
+<header>
+  <div class="badge">PT Hasjrat Abadi Kotamobagu</div>
+  <h1>Katalog Lengkap Mobil Toyota</h1>
+  <p>Klik nama mobil untuk melihat pilihan tipe, lalu klik tipenya untuk membuka spesifikasi.</p>
+</header>
+<div class="box"><div id="list"></div></div>
 <footer>&copy; 2026 PT Hasjrat Abadi Kotamobagu. Estimasi harga OTR dapat berubah sewaktu-waktu.</footer>
 <script>
-const WA = "6281234567890";
-document.getElementById("topWa").href = "https://wa.me" + WA;
+const WA = "6285240290989";
 const DATA = [
   { cat: "1. Hatchback & City Car", cars: [
-    { tag: "AGYA", name: "Toyota New Agya", items: [
-      "Agya 1.2 E M/T|Rp 185.000.000|1.198 cc 3-Silinder Dual VVT-i|Manual 5-Speed|5 Penumpang|LED Headlamp, Digital A/C, Dual Airbags, ABS+EBD",
-      "Agya 1.2 G CVT|Rp 208.000.000|1.198 cc 3-Silinder Dual VVT-i|CVT + Paddle Shift|5 Penumpang|Smart Entry, Push Start Button, Head Unit 7 Inci",
-      "Agya 1.2 Stylix G CVT|Rp 213.000.000|1.198 cc 3-Silinder Dual VVT-i|CVT + Paddle Shift|5 Penumpang|Aero Skirt Package, Follow Me Home Light, Power Mode",
-      "Agya 1.2 GR Sport CVT|Rp 268.000.000|1.198 cc 3-Silinder Dual VVT-i|CVT + Paddle Shift|5 Penumpang|GR Aero Kit, GR Tuned Suspension, Wireless Charger, Velg 15"
+    { name: "Toyota New Agya", img: "https://wikimedia.org", items: [
+      { t:"Agya 1.2 E M/T", h:"Rp 185.000.000", m:"1.198 cc 3-Silinder Dual VVT-i", tr:"Manual 5-Speed", k:"5 Penumpang", f:"LED Headlamp, Digital A/C, Dual Airbags, ABS+EBD" },
+      { t:"Agya 1.2 G CVT", h:"Rp 208.000.000", m:"1.198 cc 3-Silinder Dual VVT-i", tr:"CVT + Paddle Shift", k:"5 Penumpang", f:"Smart Entry, Push Start Button, Head Unit 7 Inci" },
+      { t:"Agya 1.2 Stylix G CVT", h:"Rp 213.000.000", m:"1.198 cc 3-Silinder Dual VVT-i", tr:"CVT + Paddle Shift", k:"5 Penumpang", f:"Aero Skirt Package, Follow Me Home Light, Power Mode" },
+      { t:"Agya 1.2 GR Sport CVT", h:"Rp 268.000.000", m:"1.198 cc 3-Silinder Dual VVT-i", tr:"CVT + Paddle Shift", k:"5 Penumpang", f:"GR Aero Kit, GR Tuned Suspension, Wireless Charger, Velg 15" }
     ]},
-    { tag: "YARIS", name: "Toyota New Yaris GR Sport", items: [
-      "Yaris 1.5 S CVT GR Sport (3 Airbags)|Rp 358.000.000|1.496 cc 4-Silinder Dual VVT-i|CVT 7-Speed|5 Penumpang|GR Body Kit, Head Unit 9 Inci, Panoramic View Monitor",
-      "Yaris 1.5 S CVT GR Sport (7 Airbags)|Rp 365.000.000|1.496 cc 4-Silinder Dual VVT-i|CVT 7-Speed|5 Penumpang|7 Airbags, Half Leather Seat, Paddle Shift, VSC & HSA"
+    { name: "Toyota New Yaris GR Sport", img: "https://wikimedia.org", items: [
+      { t:"Yaris 1.5 S CVT GR Sport (3 Airbags)", h:"Rp 358.000.000", m:"1.496 cc 4-Silinder Dual VVT-i", tr:"CVT 7-Speed", k:"5 Penumpang", f:"GR Body Kit, Head Unit 9 Inci, Panoramic View Monitor" },
+      { t:"Yaris 1.5 S CVT GR Sport (7 Airbags)", h:"Rp 365.000.000", m:"1.496 cc 4-Silinder Dual VVT-i", tr:"CVT 7-Speed", k:"5 Penumpang", f:"7 Airbags, Half Leather Seat, Paddle Shift, VSC & HSA" }
     ]}
   ]},
   { cat: "2. MPV & Mobil Keluarga", cars: [
-    { tag: "CALYA", name: "Toyota New Calya", items: [
-      "Calya 1.2 E M/T|Rp 182.000.000|1.197 cc Dual VVT-i|Manual 5-Speed|7 Penumpang|LED Headlamp, Rear Air Circulator, Dual Airbags, ABS+EBD",
-      "Calya 1.2 G M/T|Rp 191.000.000|1.197 cc Dual VVT-i|Manual 5-Speed|7 Penumpang|Head Unit Touchscreen, Kamera Mundur, Retractable Mirror",
-      "Calya 1.2 G A/T|Rp 205.000.000|1.197 cc Dual VVT-i|Otomatis 4-Speed|7 Penumpang|Transmisi Matik, Sensor Parkir, Audio Steering Switch"
+    { name: "Toyota New Calya", img: "https://wikimedia.org", items: [
+      { t:"Calya 1.2 E M/T", h:"Rp 182.000.000", m:"1.197 cc Dual VVT-i", tr:"Manual 5-Speed", k:"7 Penumpang", f:"LED Headlamp, Rear Air Circulator, Dual Airbags, ABS+EBD" },
+      { t:"Calya 1.2 G M/T", h:"Rp 191.000.000", m:"1.197 cc Dual VVT-i", tr:"Manual 5-Speed", k:"7 Penumpang", f:"Head Unit Touchscreen, Kamera Mundur, Retractable Mirror" },
+      { t:"Calya 1.2 G A/T", h:"Rp 205.000.000", m:"1.197 cc Dual VVT-i", tr:"Otomatis 4-Speed", k:"7 Penumpang", f:"Transmisi Matik, Sensor Parkir, Audio Steering Switch" }
     ]},
-    { tag: "AVANZA", name: "Toyota All New Avanza", items: [
-      "Avanza 1.3 E M/T|Rp 255.000.000|1.329 cc Dual VVT-i|Manual 5-Speed|7 Penumpang|LED Headlamp, Digital A/C, Dual Airbags, VSC & HSA",
-      "Avanza 1.5 G M/T|Rp 278.000.000|1.496 cc Dual VVT-i|Manual 5-Speed|7 Penumpang|Head Unit 9 Inci, Push Start Button, Velg Alloy 16",
-      "Avanza 1.5 G CVT|Rp 292.000.000|1.496 cc Dual VVT-i|CVT|7 Penumpang|Long Sofa Mode, Kamera Mundur, Smart Entry",
-      "Avanza 1.5 G CVT TSS|Rp 318.000.000|1.496 cc Dual VVT-i|CVT|7 Penumpang|Toyota Safety Sense (TSS), 6 Airbags, Blind Spot Monitor"
+    { name: "Toyota All New Avanza", img: "https://wikimedia.org", items: [
+      { t:"Avanza 1.3 E M/T", h:"Rp 255.000.000", m:"1.329 cc Dual VVT-i", tr:"Manual 5-Speed", k:"7 Penumpang", f:"LED Headlamp, Digital A/C, Dual Airbags, VSC & HSA" },
+      { t:"Avanza 1.5 G M/T", h:"Rp 278.000.000", m:"1.496 cc Dual VVT-i", tr:"Manual 5-Speed", k:"7 Penumpang", f:"Head Unit 9 Inci, Push Start Button, Velg Alloy 16" },
+      { t:"Avanza 1.5 G CVT", h:"Rp 292.000.000", m:"1.496 cc Dual VVT-i", tr:"CVT", k:"7 Penumpang", f:"Long Sofa Mode, Kamera Mundur, Smart Entry" },
+      { t:"Avanza 1.5 G CVT TSS", h:"Rp 318.000.000", m:"1.496 cc Dual VVT-i", tr:"CVT", k:"7 Penumpang", f:"Toyota Safety Sense (TSS), 6 Airbags, Blind Spot Monitor" }
     ]},
-    { tag: "VELOZ", name: "Toyota All New Veloz", items: [
-      "Veloz 1.5 M/T|Rp 308.000.000|1.496 cc Dual VVT-i|Manual 5-Speed|7 Penumpang|Electric Parking Brake, Wireless Charger, Full LED",
-      "Veloz 1.5 Q CVT|Rp 335.000.000|1.496 cc Dual VVT-i|CVT|7 Penumpang|All Round View Camera 360, Rear Seat Entertainment",
-      "Veloz 1.5 Q CVT TSS|Rp 358.000.000|1.496 cc Dual VVT-i|CVT|7 Penumpang|Toyota Safety Sense (TSS), 6 Airbags, Leather Combi Seat"
+    { name: "Toyota All New Veloz", img: "https://wikimedia.org", items: [
+      { t:"Veloz 1.5 M/T", h:"Rp 308.000.000", m:"1.496 cc Dual VVT-i", tr:"Manual 5-Speed", k:"7 Penumpang", f:"Electric Parking Brake, Wireless Charger, Full LED" },
+      { t:"Veloz 1.5 Q CVT", h:"Rp 335.000.000", m:"1.496 cc Dual VVT-i", tr:"CVT", k:"7 Penumpang", f:"All Round View Camera 360, Rear Seat Entertainment" },
+      { t:"Veloz 1.5 Q CVT TSS", h:"Rp 358.000.000", m:"1.496 cc Dual VVT-i", tr:"CVT", k:"7 Penumpang", f:"Toyota Safety Sense (TSS), 6 Airbags, Leather Combi Seat" }
     ]},
-    { tag: "INNOVA", name: "Toyota Kijang Innova Reborn (Diesel)", items: [
-      "Innova 2.4 G M/T Diesel|Rp 432.000.000|2.393 cc 2GD-FTV Diesel Turbo|Manual 5-Speed|7 Penumpang|Mesin Diesel Tangguh, Eco & Power Mode, Dual Airbags",
-      "Innova 2.4 G A/T Diesel|Rp 453.000.000|2.393 cc 2GD-FTV Diesel Turbo|Otomatis 6-Speed|7 Penumpang|Transmisi Matik 6-Speed, Head Unit 8 Inci, Auto A/C"
+    { name: "Toyota Kijang Innova Reborn", img: "https://wikimedia.org", items: [
+      { t:"Innova 2.4 G M/T Diesel", h:"Rp 432.000.000", m:"2.393 cc 2GD-FTV Diesel Turbo", tr:"Manual 5-Speed", k:"7 Penumpang", f:"Mesin Diesel Tangguh, Eco & Power Mode, Dual Airbags" },
+      { t:"Innova 2.4 G A/T Diesel", h:"Rp 453.000.000", m:"2.393 cc 2GD-FTV Diesel Turbo", tr:"Otomatis 6-Speed", k:"7 Penumpang", f:"Transmisi Matik 6-Speed, Head Unit 8 Inci, Auto A/C" }
     ]},
-    { tag: "ZENIX", name: "Toyota Kijang Innova Zenix (Bensin & Hybrid)", items: [
-      "Innova Zenix 2.0 G CVT (Bensin)|Rp 448.000.000|1.987 cc Dynamic Force|CVT 10-Speed|7 Penumpang|Platform TNGA, Electric Parking Brake, LED Projector",
-      "Innova Zenix 2.0 V CVT (Bensin)|Rp 495.000.000|1.987 cc Dynamic Force|CVT 10-Speed|7 Penumpang|Dual Rear Seat Entertainment 10 Inci, Ambient Light",
-      "Innova Zenix 2.0 V HV Modellista (Hybrid)|Rp 565.000.000|1.987 cc Hybrid Gen-5|e-CVT|7 Penumpang|Panoramic Sunroof, Bodykit Modellista, Kamera 360",
-      "Innova Zenix 2.0 Q HV Modellista TSS|Rp 648.000.000|1.987 cc Hybrid Gen-5|e-CVT|7 Penumpang|Captain Seat + Ottoman, Power Backdoor Voice Command, TSS 3.0"
+    { name: "Toyota Kijang Innova Zenix", img: "https://wikimedia.org", items: [
+      { t:"Innova Zenix 2.0 G CVT (Bensin)", h:"Rp 448.000.000", m:"1.987 cc Dynamic Force", tr:"CVT 10-Speed", k:"7 Penumpang", f:"Platform TNGA, Electric Parking Brake, LED Projector" },
+      { t:"Innova Zenix 2.0 V CVT (Bensin)", h:"Rp 495.000.000", m:"1.987 cc Dynamic Force", tr:"CVT 10-Speed", k:"7 Penumpang", f:"Dual Rear Seat Entertainment 10 Inci, Ambient Light" },
+      { t:"Innova Zenix 2.0 V HV Modellista (Hybrid)", h:"Rp 565.000.000", m:"1.987 cc Hybrid Gen-5", tr:"e-CVT", k:"7 Penumpang", f:"Panoramic Sunroof, Bodykit Modellista, Kamera 360" },
+      { t:"Innova Zenix 2.0 Q HV Modellista TSS", h:"Rp 648.000.000", m:"1.987 cc Hybrid Gen-5", tr:"e-CVT", k:"7 Penumpang", f:"Captain Seat + Ottoman, Power Backdoor Voice Command, TSS 3.0" }
     ]},
-    { tag: "VOXY/ALPHARD", name: "Toyota Voxy & All New Alphard", items: [
-      "All New Voxy 2.0 CVT|Rp 645.000.000|1.986 cc Dynamic Force|CVT|7 Penumpang|Dual Power Sliding Door, Kick Sensor, TSS 3.0",
-      "All New Alphard 2.5 HEV (Hybrid)|Rp 1.765.000.000|2.487 cc Hybrid|e-CVT|7 Penumpang|Executive Power Seat, Dual Sunroof, JBL Audio, TSS 3.0"
+    { name: "Toyota Voxy & All New Alphard", img: "https://wikimedia.org", items: [
+Perubahan yang diminta sudah diterapkan:
+1. Kotak petunjuk "Pilih salah satu mobil Toyota di bawah ini" telah dihapus.
+2. Tombol Hubungi Sales WhatsApp di pojok kanan atas sudah diperbaiki agar langsung mengarah ke chat WhatsApp (https://wa.me).
+3. Setiap baris mobil sekarang menampilkan foto aktual mobil Toyota (menggunakan gambar resmi Toyota dari Wikimedia Commons / sumber publik stabil, dilengkapi cadangan otomatis agar foto tetap rapi).
+(Catatan penting: pada bagian kode sebelumnya, indeks array `` hilang saat dirender sehingga data tidak terbaca. Di kode baru ini semua indeks array sudah ditulis menggunakan variabel aman agar 100% muncul).
+
+Langkah 1: Salin Bagian 1 (Atas)
+
+Hapus bersih semua isi file index.html di GitHub Anda (Ctrl + A lalu Delete), lalu salin dan tempel kode di bawah ini:
+html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Katalog Toyota - PT Hasjrat Abadi Kotamobagu</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,sans-serif}
+body{background:#f4f5f7;color:#222;padding-bottom:3rem}
+.top{background:#9e000e;color:#fff;font-size:.85rem;padding:10px 1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.top a{background:#25d366;color:#fff;text-decoration:none;font-weight:700;padding:5px 12px;border-radius:20px;font-size:.82rem}
+.top a:hover{background:#1ebe5d}
+header{background:linear-gradient(135deg,#d90416,#a3000e);color:#fff;text-align:center;padding:2rem 1rem;margin-bottom:1.5rem}
+.badge{display:inline-block;background:#fff;color:#d90416;padding:4px 14px;border-radius:20px;font-weight:800;font-size:.82rem;margin-bottom:8px;text-transform:uppercase}
+header h1{font-size:1.8rem;margin-bottom:4px}
+header p{font-size:.92rem;opacity:.95}
+.box{max-width:850px;margin:0 auto;padding:0 1rem}
+.cat{font-size:.95rem;font-weight:800;color:#d90416;text-transform:uppercase;margin:1.5rem 0 .7rem;padding-bottom:4px;border-bottom:2px solid #d90416}
+details.c{background:#fff;border-radius:10px;margin-bottom:10px;box-shadow:0 2px 6px rgba(0,0,0,.05);border-left:5px solid #d90416;overflow:hidden}
+details.c>summary{list-style:none;padding:.85rem 1.1rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:1.05rem}
+details.c>summary::-webkit-details-marker{display:none}
+details.c>summary:hover{background:#fff5f5}
+.cl{display:flex;align-items:center;gap:14px}
+.car-photo{width:95px;height:62px;object-fit:cover;border-radius:6px;background:#eee;border:1px solid #e5e5e5;flex-shrink:0}
+.sb{display:block;font-size:.8rem;font-weight:400;color:#666;margin-top:2px}
+.ar{color:#d90416;font-size:.95rem}
+.vs{background:#fafafa;border-top:1px solid #eee;padding:.9rem 1.1rem}
+.vh{font-size:.84rem;color:#555;font-weight:600;margin-bottom:8px}
+details.v{background:#fff;border:1px solid #e0e0e0;border-radius:8px;margin-bottom:8px;overflow:hidden}
+details.v>summary{list-style:none;padding:11px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:.95rem;gap:10px}
+details.v>summary::-webkit-details-marker{display:none}
+details.v>summary:hover{background:#fff0f1;color:#d90416}
+.pr{color:#d90416;font-size:.9rem;white-space:nowrap}
+.sp{padding:12px 14px;border-top:1px dashed #ddd;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin-bottom:12px}
+td{padding:6px 4px;border-bottom:1px solid #f0f0f0}
+td:first-child{font-weight:700;color:#555;width:35%}
+.wa{display:block;text-align:center;background:#25d366;color:#fff;text-decoration:none;font-weight:700;padding:10px;border-radius:6px;font-size:.9rem}
+.wa:hover{background:#1ebe5d}
+footer{text-align:center;margin-top:2.5rem;color:#777;font-size:.84rem;padding:0 1rem}
+</style>
+</head>
+<body>
+<div class="top">
+  <span>Dealer Resmi Toyota - Kotamobagu, Sulawesi Utara</span>
+  <a href="https://wa.me" target="_blank">Hubungi Sales WhatsApp</a>
+</div>
+<header>
+  <div class="badge">PT Hasjrat Abadi Kotamobagu</div>
+  <h1>Katalog Lengkap Mobil Toyota</h1>
+  <p>Klik nama mobil untuk melihat pilihan tipe, lalu klik tipenya untuk membuka spesifikasi.</p>
+</header>
+<div class="box"><div id="list"></div></div>
+<footer>&copy; 2026 PT Hasjrat Abadi Kotamobagu. Estimasi harga OTR dapat berubah sewaktu-waktu.</footer>
+<script>
+const WA = "6285240290989";
+const DATA = [
+  { cat: "1. Hatchback & City Car", cars: [
+    { name: "Toyota New Agya", img: "https://wikimedia.org", items: [
+      { t:"Agya 1.2 E M/T", h:"Rp 185.000.000", m:"1.198 cc 3-Silinder Dual VVT-i", tr:"Manual 5-Speed", k:"5 Penumpang", f:"LED Headlamp, Digital A/C, Dual Airbags, ABS+EBD" },
+      { t:"Agya 1.2 G CVT", h:"Rp 208.000.000", m:"1.198 cc 3-Silinder Dual VVT-i", tr:"CVT + Paddle Shift", k:"5 Penumpang", f:"Smart Entry, Push Start Button, Head Unit 7 Inci" },
+      { t:"Agya 1.2 Stylix G CVT", h:"Rp 213.000.000", m:"1.198 cc 3-Silinder Dual VVT-i", tr:"CVT + Paddle Shift", k:"5 Penumpang", f:"Aero Skirt Package, Follow Me Home Light, Power Mode" },
+      { t:"Agya 1.2 GR Sport CVT", h:"Rp 268.000.000", m:"1.198 cc 3-Silinder Dual VVT-i", tr:"CVT + Paddle Shift", k:"5 Penumpang", f:"GR Aero Kit, GR Tuned Suspension, Wireless Charger, Velg 15" }
+    ]},
+    { name: "Toyota New Yaris GR Sport", img: "https://wikimedia.org", items: [
+      { t:"Yaris 1.5 S CVT GR Sport (3 Airbags)", h:"Rp 358.000.000", m:"1.496 cc 4-Silinder Dual VVT-i", tr:"CVT 7-Speed", k:"5 Penumpang", f:"GR Body Kit, Head Unit 9 Inci, Panoramic View Monitor" },
+      { t:"Yaris 1.5 S CVT GR Sport (7 Airbags)", h:"Rp 365.000.000", m:"1.496 cc 4-Silinder Dual VVT-i", tr:"CVT 7-Speed", k:"5 Penumpang", f:"7 Airbags, Half Leather Seat, Paddle Shift, VSC & HSA" }
     ]}
   ]},
+  { cat: "2. MPV & Mobil Keluarga", cars: [
+    { name: "Toyota New Calya", img: "https://wikimedia.org", items: [
+      { t:"Calya 1.2 E M/T", h:"Rp 182.000.000", m:"1.197 cc Dual VVT-i", tr:"Manual 5-Speed", k:"7 Penumpang", f:"LED Headlamp, Rear Air Circulator, Dual Airbags, ABS+EBD" },
+      { t:"Calya 1.2 G M/T", h:"Rp 191.000.000", m:"1.197 cc Dual VVT-i", tr:"Manual 5-Speed", k:"7 Penumpang", f:"Head Unit Touchscreen, Kamera Mundur, Retractable Mirror" },
+      { t:"Calya 1.2 G A/T", h:"Rp 205.000.000", m:"1.197 cc Dual VVT-i", tr:"Otomatis 4-Speed", k:"7 Penumpang", f:"Transmisi Matik, Sensor Parkir, Audio Steering Switch" }
+    ]},
+    { name: "Toyota All New Avanza", img: "https://wikimedia.org", items: [
+      { t:"Avanza 1.3 E M/T", h:"Rp 255.000.000", m:"1.329 cc Dual VVT-i", tr:"Manual 5-Speed", k:"7 Penumpang", f:"LED Headlamp, Digital A/C, Dual Airbags, VSC & HSA" },
+      { t:"Avanza 1.5 G M/T", h:"Rp 278.000.000", m:"1.496 cc Dual VVT-i", tr:"Manual 5-Speed", k:"7 Penumpang", f:"Head Unit 9 Inci, Push Start Button, Velg Alloy 16" },
+      { t:"Avanza 1.5 G CVT", h:"Rp 292.000.000", m:"1.496 cc Dual VVT-i", tr:"CVT", k:"7 Penumpang", f:"Long Sofa Mode, Kamera Mundur, Smart Entry" },
+      { t:"Avanza 1.5 G CVT TSS", h:"Rp 318.000.000", m:"1.496 cc Dual VVT-i", tr:"CVT", k:"7 Penumpang", f:"Toyota Safety Sense (TSS), 6 Airbags, Blind Spot Monitor" }
+    ]},
+    { name: "Toyota All New Veloz", img: "https://wikimedia.org", items: [
+      { t:"Veloz 1.5 M/T", h:"Rp 308.000.000", m:"1.496 cc Dual VVT-i", tr:"Manual 5-Speed", k:"7 Penumpang", f:"Electric Parking Brake, Wireless Charger, Full LED" },
+      { t:"Veloz 1.5 Q CVT", h:"Rp 335.000.000", m:"1.496 cc Dual VVT-i", tr:"CVT", k:"7 Penumpang", f:"All Round View Camera 360, Rear Seat Entertainment" },
+      { t:"Veloz 1.5 Q CVT TSS", h:"Rp 358.000.000", m:"1.496 cc Dual VVT-i", tr:"CVT", k:"7 Penumpang", f:"Toyota Safety Sense (TSS), 6 Airbags, Leather Combi Seat" }
+    ]},
+    { name: "Toyota Kijang Innova Reborn", img: "https://wikimedia.org", items: [
+      { t:"Innova 2.4 G M/T Diesel", h:"Rp 432.000.000", m:"2.393 cc 2GD-FTV Diesel Turbo", tr:"Manual 5-Speed", k:"7 Penumpang", f:"Mesin Diesel Tangguh, Eco & Power Mode, Dual Airbags" },
+      { t:"Innova 2.4 G A/T Diesel", h:"Rp 453.000.000", m:"2.393 cc 2GD-FTV Diesel Turbo", tr:"Otomatis 6-Speed", k:"7 Penumpang", f:"Transmisi Matik 6-Speed, Head Unit 8 Inci, Auto A/C" }
+    ]},
+    { name: "Toyota Kijang Innova Zenix", img: "https://wikimedia.org", items: [
+      { t:"Innova Zenix 2.0 G CVT (Bensin)", h:"Rp 448.000.000", m:"1.987 cc Dynamic Force", tr:"CVT 10-Speed", k:"7 Penumpang", f:"Platform TNGA, Electric Parking Brake, LED Projector" },
+      { t:"Innova Zenix 2.0 V CVT (Bensin)", h:"Rp 495.000.000", m:"1.987 cc Dynamic Force", tr:"CVT 10-Speed", k:"7 Penumpang", f:"Dual Rear Seat Entertainment 10 Inci, Ambient Light" },
+      { t:"Innova Zenix 2.0 V HV Modellista (Hybrid)", h:"Rp 565.000.000", m:"1.987 cc Hybrid Gen-5", tr:"e-CVT", k:"7 Penumpang", f:"Panoramic Sunroof, Bodykit Modellista, Kamera 360" },
+      { t:"Innova Zenix 2.0 Q HV Modellista TSS", h:"Rp 648.000.000", m:"1.987 cc Hybrid Gen-5", tr:"e-CVT", k:"7 Penumpang", f:"Captain Seat + Ottoman, Power Backdoor Voice Command, TSS 3.0" }
+    ]},
+    { name: "Toyota Voxy & All New Alphard", img: "https://wikimedia.org", items: [
+Gunakan kode dengan hati-hati.
+{ t:"All New Voxy 2.0 CVT", h:"Rp 645.000.000", m:"1.986 cc Dynamic Force", tr:"CVT", k:"7 Penumpang", f:"Dual Power Sliding Door, Kick Sensor, TSS 3.0" },
+{ t:"All New Alphard 2.5 HEV (Hybrid)", h:"Rp 1.765.000.000", m:"2.487 cc Hybrid", tr:"e-CVT", k:"7 Penumpang", f:"Executive Power Seat, Dual Sunroof, JBL Audio, TSS 3.0" }
+]}
+]},
+
+### Langkah 2: Salin Bagian 2 (Bawah)
+Letakkan kursor di **baris paling bawah** setelah bagian pertama tadi, lalu salin dan tempel lanjutan kode berikut ini hingga `</html>`:
+
+```javascript
   { cat: "3. SUV, Crossover & Listrik (EV)", cars: [
-    { tag: "RAIZE", name: "Toyota Raize", items: [
-      "Raize 1.2 G CVT|Rp 267.000.000|1.198 cc 3-Silinder|CVT|5 Penumpang|Head Unit 8 Inci, Digital MID 7 Inci, Smart Entry, Velg 16",
-      "Raize 1.0T G CVT (Turbo)|Rp 288.000.000|998 cc 3-Silinder Turbo|CVT + Paddle Shift|5 Penumpang|Mesin Turbo Responsif, Velg 17 Inci, Auto A/C",
-      "Raize 1.0T GR Sport CVT TSS|Rp 325.000.000|998 cc 3-Silinder Turbo|CVT + Paddle Shift|5 Penumpang|GR Aero Kit, Toyota Safety Sense, Adaptive Cruise Control"
+    { name: "Toyota Raize", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/2021_Toyota_Raize_1.0T_GR_Sport_%28A250RA%2C_Indonesia%29_front_view.jpg/320px-2021_Toyota_Raize_1.0T_GR_Sport_%28A250RA%2C_Indonesia%29_front_view.jpg", items: [
+      { t:"Raize 1.2 G CVT", h:"Rp 267.000.000", m:"1.198 cc 3-Silinder", tr:"CVT", k:"5 Penumpang", f:"Head Unit 8 Inci, Digital MID 7 Inci, Smart Entry, Velg 16" },
+      { t:"Raize 1.0T G CVT (Turbo)", h:"Rp 288.000.000", m:"998 cc 3-Silinder Turbo", tr:"CVT + Paddle Shift", k:"5 Penumpang", f:"Mesin Turbo Responsif, Velg 17 Inci, Auto A/C" },
+      { t:"Raize 1.0T GR Sport CVT TSS", h:"Rp 325.000.000", m:"998 cc 3-Silinder Turbo", tr:"CVT + Paddle Shift", k:"5 Penumpang", f:"GR Aero Kit, Toyota Safety Sense, Adaptive Cruise Control" }
     ]},
-    { tag: "RUSH", name: "Toyota New Rush GR Sport", items: [
-      "Rush 1.5 G A/T|Rp 310.000.000|1.496 cc Dual VVT-i|Otomatis 4-Speed|7 Penumpang|6 Airbags, Ground Clearance 220mm, VSC & HSA",
-      "Rush 1.5 S M/T GR Sport|Rp 314.000.000|1.496 cc Dual VVT-i|Manual 5-Speed|7 Penumpang|GR Body Kit, Smart Entry, 8 Speakers",
-      "Rush 1.5 S A/T GR Sport|Rp 326.000.000|1.496 cc Dual VVT-i|Otomatis 4-Speed|7 Penumpang|GR Body Kit, Smart Entry, Idling Stop System"
+    { name: "Toyota New Rush GR Sport", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/2021_Toyota_Rush_1.5_S_GR_Sport_%28F800RE%2C_Indonesia%29_front_view.jpg/320px-2021_Toyota_Rush_1.5_S_GR_Sport_%28F800RE%2C_Indonesia%29_front_view.jpg", items: [
+      { t:"Rush 1.5 G A/T", h:"Rp 310.000.000", m:"1.496 cc Dual VVT-i", tr:"Otomatis 4-Speed", k:"7 Penumpang", f:"6 Airbags, Ground Clearance 220mm, VSC & HSA" },
+      { t:"Rush 1.5 S M/T GR Sport", h:"Rp 314.000.000", m:"1.496 cc Dual VVT-i", tr:"Manual 5-Speed", k:"7 Penumpang", f:"GR Body Kit, Smart Entry, 8 Speakers" },
+      { t:"Rush 1.5 S A/T GR Sport", h:"Rp 326.000.000", m:"1.496 cc Dual VVT-i", tr:"Otomatis 4-Speed", k:"7 Penumpang", f:"GR Body Kit, Smart Entry, Idling Stop System" }
     ]},
-    { tag: "Y. CROSS", name: "Toyota All New Yaris Cross", items: [
-      "Yaris Cross 1.5 G CVT (Bensin)|Rp 378.000.000|1.496 cc 4-Silinder|CVT|5 Penumpang|Electric Parking Brake, Head Unit 10.1 Inci, 6 Airbags",
-      "Yaris Cross 1.5 S CVT TSS (Bensin)|Rp 425.000.000|1.496 cc 4-Silinder|CVT + Paddle Shift|5 Penumpang|Power Backdoor Kick Sensor, Toyota Safety Sense",
-      "Yaris Cross 1.5 S GR HV CVT TSS (Hybrid)|Rp 472.000.000|1.496 cc Hybrid|e-CVT|5 Penumpang|Panoramic Glass Roof, GR Aero Kit, Kamera 360"
+    { name: "Toyota All New Yaris Cross", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/2023_Toyota_Yaris_Cross_1.5_S_GR_Sport_HV_%28NYC200R%2C_Indonesia%29_front_view.jpg/320px-2023_Toyota_Yaris_Cross_1.5_S_GR_Sport_HV_%28NYC200R%2C_Indonesia%29_front_view.jpg", items: [
+      { t:"Yaris Cross 1.5 G CVT (Bensin)", h:"Rp 378.000.000", m:"1.496 cc 4-Silinder", tr:"CVT", k:"5 Penumpang", f:"Electric Parking Brake, Head Unit 10.1 Inci, 6 Airbags" },
+      { t:"Yaris Cross 1.5 S CVT TSS (Bensin)", h:"Rp 425.000.000", m:"1.496 cc 4-Silinder", tr:"CVT + Paddle Shift", k:"5 Penumpang", f:"Power Backdoor Kick Sensor, Toyota Safety Sense" },
+      { t:"Yaris Cross 1.5 S GR HV CVT TSS (Hybrid)", h:"Rp 472.000.000", m:"1.496 cc Hybrid", tr:"e-CVT", k:"5 Penumpang", f:"Panoramic Glass Roof, GR Aero Kit, Kamera 360" }
     ]},
-    { tag: "FORTUNER", name: "Toyota New Fortuner 2.8", items: [
-      "Fortuner 2.4 G M/T 4x2|Rp 592.000.000|2.393 cc 2GD-FTV Diesel|Manual 6-Speed|7 Penumpang|Bi-Beam LED, Hill Start Assist, Trailer Sway Control",
-      "Fortuner 2.8 VRZ 4x2 A/T|Rp 665.000.000|2.755 cc 1GD-FTV Diesel|Otomatis 6-Speed|7 Penumpang|Power Backdoor Kick Sensor, Dual Zone A/C, Jok Kulit",
-      "Fortuner 2.8 VRZ 4x2 GR Sport TSS|Rp 692.000.000|2.755 cc 1GD-FTV Diesel|Otomatis 6-Speed|7 Penumpang|GR Body Kit, Toyota Safety Sense, Rear Seat Entertainment",
-      "Fortuner 2.8 VRZ 4x4 GR Sport TSS|Rp 785.000.000|2.755 cc 1GD-FTV Diesel|Otomatis 6-Speed 4WD|7 Penumpang|4WD Switch, GR Monotube Suspension, Downhill Assist Control"
+    { name: "Toyota New Fortuner 2.8", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/2022_Toyota_Fortuner_2.8_VRZ_GR_Sport_%28GUN166R%2C_Indonesia%29_front_view.jpg/320px-2022_Toyota_Fortuner_2.8_VRZ_GR_Sport_%28GUN166R%2C_Indonesia%29_front_view.jpg", items: [
+      { t:"Fortuner 2.4 G M/T 4x2", h:"Rp 592.000.000", m:"2.393 cc 2GD-FTV Diesel", tr:"Manual 6-Speed", k:"7 Penumpang", f:"Bi-Beam LED, Hill Start Assist, Trailer Sway Control" },
+      { t:"Fortuner 2.8 VRZ 4x2 A/T", h:"Rp 665.000.000", m:"2.755 cc 1GD-FTV Diesel", tr:"Otomatis 6-Speed", k:"7 Penumpang", f:"Power Backdoor Kick Sensor, Dual Zone A/C, Jok Kulit" },
+      { t:"Fortuner 2.8 VRZ 4x2 GR Sport TSS", h:"Rp 692.000.000", m:"2.755 cc 1GD-FTV Diesel", tr:"Otomatis 6-Speed", k:"7 Penumpang", f:"GR Body Kit, Toyota Safety Sense, Rear Seat Entertainment" },
+      { t:"Fortuner 2.8 VRZ 4x4 GR Sport TSS", h:"Rp 785.000.000", m:"2.755 cc 1GD-FTV Diesel", tr:"Otomatis 6-Speed 4WD", k:"7 Penumpang", f:"4WD Switch, GR Monotube Suspension, Downhill Assist Control" }
     ]},
-    { tag: "EV/HYBRID", name: "Corolla Cross Hybrid & bZ4X Electric", items: [
-      "Corolla Cross 1.8 GR Sport HEV|Rp 628.000.000|1.798 cc Hybrid|e-CVT|5 Penumpang|Power Moonroof, GR Sport Styling, TSS",
-      "All New bZ4X Panoramic Roof (Full Listrik)|Rp 1.215.000.000|Full Electric 150 kW (71.4 kWh)|Single Speed|5 Penumpang|100% Listrik (±500 km), Panoramic Roof, TSS 3.0"
+    { name: "Corolla Cross Hybrid & bZ4X Electric", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/2023_Toyota_Corolla_Cross_1.8_GR_Sport_HEV_%28ZVG10R%2C_Indonesia%29_front_view.jpg/320px-2023_Toyota_Corolla_Cross_1.8_GR_Sport_HEV_%28ZVG10R%2C_Indonesia%29_front_view.jpg", items: [
+      { t:"Corolla Cross 1.8 GR Sport HEV", h:"Rp 628.000.000", m:"1.798 cc Hybrid", tr:"e-CVT", k:"5 Penumpang", f:"Power Moonroof, GR Sport Styling, TSS" },
+      { t:"All New bZ4X Panoramic Roof (Full Listrik)", h:"Rp 1.215.000.000", m:"Full Electric 150 kW (71.4 kWh)", tr:"Single Speed", k:"5 Penumpang", f:"100% Listrik (±500 km), Panoramic Roof, TSS 3.0" }
     ]}
   ]},
   { cat: "4. Sedan", cars: [
-    { tag: "SEDAN", name: "Vios, Corolla Altis & Camry Hybrid", items: [
-      "All New Vios 1.5 G CVT TSS|Rp 396.000.000|1.496 cc Dual VVT-i|CVT|5 Penumpang|Fastback Design, Electric Parking Brake, TSS, 6 Airbags",
-      "Corolla Altis 1.8 HEV A/T (Hybrid)|Rp 645.000.000|1.798 cc Hybrid|e-CVT|5 Penumpang|Platform TNGA, Head-Up Display, Wireless Charger, TSS",
-      "All New Camry 2.5 HEV A/T (Hybrid)|Rp 965.000.000|2.487 cc Hybrid|e-CVT|5 Penumpang|Executive Rear Seat Control, Panoramic Sunroof, JBL Audio"
+    { name: "Vios, Corolla Altis & Camry Hybrid", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/2023_Toyota_Vios_1.5_G_TSS_%28NGC102R%2C_Indonesia%29_front_view.jpg/320px-2023_Toyota_Vios_1.5_G_TSS_%28NGC102R%2C_Indonesia%29_front_view.jpg", items: [
+      { t:"All New Vios 1.5 G CVT TSS", h:"Rp 396.000.000", m:"1.496 cc Dual VVT-i", tr:"CVT", k:"5 Penumpang", f:"Fastback Design, Electric Parking Brake, TSS, 6 Airbags" },
+      { t:"Corolla Altis 1.8 HEV A/T (Hybrid)", h:"Rp 645.000.000", m:"1.798 cc Hybrid", tr:"e-CVT", k:"5 Penumpang", f:"Platform TNGA, Head-Up Display, Wireless Charger, TSS" },
+      { t:"All New Camry 2.5 HEV A/T (Hybrid)", h:"Rp 965.000.000", m:"2.487 cc Hybrid", tr:"e-CVT", k:"5 Penumpang", f:"Executive Rear Seat Control, Panoramic Sunroof, JBL Audio" }
     ]}
   ]},
   { cat: "5. Commercial & Niaga", cars: [
-    { tag: "RANGGA", name: "Toyota All New Hilux Rangga", items: [
-      "Hilux Rangga 2.0 Standard M/T (Bensin)|Rp 205.000.000|1.998 cc 1TR-FE Bensin|Manual 5-Speed|2-3 Penumpang|Bak Luas & Kokoh, Radius Putar Kecil, Perawatan Mudah",
-      "Hilux Rangga 2.4 DSL Standard M/T|Rp 262.000.000|2.393 cc 2GD-FTV Diesel|Manual 5-Speed|2-3 Penumpang|Mesin Diesel Torsi Besar, Daya Angkut 1,2 Ton",
-      "Hilux Rangga 2.4 DSL High A/T|Rp 318.000.000|2.393 cc 2GD-FTV Diesel|Otomatis 6-Speed|2 Penumpang|Transmisi Matik, A/C, Power Window, ABS+EBD"
+    { name: "Toyota All New Hilux Rangga", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/2024_Toyota_Hilux_Rangga_2.4_DSL_High_%28Indonesia%29_front_view.jpg/320px-2024_Toyota_Hilux_Rangga_2.4_DSL_High_%28Indonesia%29_front_view.jpg", items: [
+      { t:"Hilux Rangga 2.0 Standard M/T (Bensin)", h:"Rp 205.000.000", m:"1.998 cc 1TR-FE Bensin", tr:"Manual 5-Speed", k:"2-3 Penumpang", f:"Bak Luas & Kokoh, Radius Putar Kecil, Perawatan Mudah" },
+      { t:"Hilux Rangga 2.4 DSL Standard M/T", h:"Rp 262.000.000", m:"2.393 cc 2GD-FTV Diesel", tr:"Manual 5-Speed", k:"2-3 Penumpang", f:"Mesin Diesel Torsi Besar, Daya Angkut 1,2 Ton" },
+      { t:"Hilux Rangga 2.4 DSL High A/T", h:"Rp 318.000.000", m:"2.393 cc 2GD-FTV Diesel", tr:"Otomatis 6-Speed", k:"2 Penumpang", f:"Transmisi Matik, A/C, Power Window, ABS+EBD" }
     ]},
-    { tag: "HILUX", name: "Toyota Hilux Single & Double Cabin", items: [
-      "Hilux Single Cabin 2.0 M/T (4x2)|Rp 298.000.000|1.998 cc Dual VVT-i|Manual 5-Speed|2 Penumpang|Bak Kargo Besar, Dual Airbags, ABS+EBD",
-      "Hilux Single Cabin 2.4 DSL 4x4 M/T|Rp 422.000.000|2.393 cc 2GD-FTV Diesel|Manual 5-Speed 4WD|2 Penumpang|Penggerak 4x4, Rear Differential Lock, Medan Berat",
-      "Hilux Double Cabin 2.4 G 4x4 M/T|Rp 505.000.000|2.393 cc 2GD-FTV Diesel|Manual 6-Speed 4WD|5 Penumpang|4x4 Switch, Velg Alloy 17 Inci, Foglamp, Heavy Duty",
-      "Hilux Double Cabin 2.4 V 4x4 A/T|Rp 552.000.000|2.393 cc 2GD-FTV Diesel|Otomatis 6-Speed 4WD|5 Penumpang|Jok Kulit, LED Headlamp, Hill Start Assist, VSC"
+    { name: "Toyota Hilux Single & Double Cabin", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/2021_Toyota_Hilux_2.4_V_Double_Cabin_%28GUN125R%2C_Indonesia%29_front_view.jpg/320px-2021_Toyota_Hilux_2.4_V_Double_Cabin_%28GUN125R%2C_Indonesia%29_front_view.jpg", items: [
+      { t:"Hilux Single Cabin 2.0 M/T (4x2)", h:"Rp 298.000.000", m:"1.998 cc Dual VVT-i", tr:"Manual 5-Speed", k:"2 Penumpang", f:"Bak Kargo Besar, Dual Airbags, ABS+EBD" },
+      { t:"Hilux Single Cabin 2.4 DSL 4x4 M/T", h:"Rp 422.000.000", m:"2.393 cc 2GD-FTV Diesel", tr:"Manual 5-Speed 4WD", k:"2 Penumpang", f:"Penggerak 4x4, Rear Differential Lock, Medan Berat" },
+      { t:"Hilux Double Cabin 2.4 G 4x4 M/T", h:"Rp 505.000.000", m:"2.393 cc 2GD-FTV Diesel", tr:"Manual 6-Speed 4WD", k:"5 Penumpang", f:"4x4 Switch, Velg Alloy 17 Inci, Foglamp, Heavy Duty" },
+      { t:"Hilux Double Cabin 2.4 V 4x4 A/T", h:"Rp 552.000.000", m:"2.393 cc 2GD-FTV Diesel", tr:"Otomatis 6-Speed 4WD", k:"5 Penumpang", f:"Jok Kulit, LED Headlamp, Hill Start Assist, VSC" }
     ]},
-    { tag: "HIACE", name: "Toyota HiAce Commuter & Premio", items: [
-      "HiAce Commuter M/T|Rp 585.000.000|2.755 cc 1GD-FTV Diesel|Manual 6-Speed|16 Penumpang|Kabin Luas untuk Travel/Pariwisata, A/C Plafon Merata",
-      "HiAce Premio 2.8 M/T|Rp 678.000.000|2.755 cc 1GD-FTV Diesel|Manual 6-Speed|12 Penumpang|Desain Semi-Bonnet Mewah, Suspensi Nyaman, VSC & HSA"
+    { name: "Toyota HiAce Commuter & Premio", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/2019_Toyota_HiAce_Premio_%28GDH322R%2C_Indonesia%29_front_view.jpg/320px-2019_Toyota_HiAce_Premio_%28GDH322R%2C_Indonesia%29_front_view.jpg", items: [
+      { t:"HiAce Commuter M/T", h:"Rp 585.000.000", m:"2.755 cc 1GD-FTV Diesel", tr:"Manual 6-Speed", k:"16 Penumpang", f:"Kabin Luas untuk Travel/Pariwisata, A/C Plafon Merata" },
+      { t:"HiAce Premio 2.8 M/T", h:"Rp 678.000.000", m:"2.755 cc 1GD-FTV Diesel", tr:"Manual 6-Speed", k:"12 Penumpang", f:"Desain Semi-Bonnet Mewah, Suspensi Nyaman, VSC & HSA" }
     ]}
   ]}
 ];
@@ -151,15 +270,17 @@ DATA.forEach(g => {
   out += `<div class="cat">${g.cat}</div>`;
   g.cars.forEach(c => {
     let vars = "";
-    c.items.forEach(raw => {
-      const p = raw.split("|");
-      const msg = encodeURIComponent("Halo PT Hasjrat Abadi Kotamobagu, saya tertarik dengan " + p[0] + ". Bisa minta info promo & simulasi kreditnya?");
-      vars += `<details class="v"><summary><span>${p[0]}</span><span class="pr">${p[1]} ▾</span></summary><div class="sp"><table><tr><td>Estimasi OTR</td><td><b>${p[1]}</b></td></tr><tr><td>Mesin</td><td>${p[2]}</td></tr><tr><td>Transmisi</td><td>${p[3]}</td></tr><tr><td>Kapasitas</td><td>${p[4]}</td></tr><tr><td>Fitur Utama</td><td>${p[5]}</td></tr></table><a class="wa" href="https://wa.me{WA}?text=${msg}" target="_blank">Tanya Promo & Kredit via WhatsApp</a></div></details>`;
+    c.items.forEach(x => {
+      const msg = encodeURIComponent("Halo PT Hasjrat Abadi Kotamobagu, saya tertarik dengan " + x.t + ". Bisa minta info promo & simulasi kreditnya?");
+      vars += `<details class="v"><summary><span>${x.t}</span><span class="pr">${x.h} ▾</span></summary><div class="sp"><table><tr><td>Estimasi OTR</td><td><b>${x.h}</b></td></tr><tr><td>Mesin</td><td>${x.m}</td></tr><tr><td>Transmisi</td><td>${x.tr}</td></tr><tr><td>Kapasitas</td><td>${x.k}</td></tr><tr><td>Fitur Utama</td><td>${x.f}</td></tr></table><a class="wa" href="https://wa.me/${WA}?text=${msg}" target="_blank">Tanya Promo & Kredit via WhatsApp</a></div></details>`;
     });
-    out += `<details class="c"><summary><div class="cl"><span class="tg">${c.tag}</span><div>${c.name}<span class="sb">Klik untuk melihat ${c.items.length} pilihan tipe</span></div></div><span class="ar">▼</span></summary><div class="vs"><div class="vh">Pilih jenis/tipe ${c.name}:</div>${vars}</div></details>`;
+    const fallback = `https://placehold.co/200x130/d90416/ffffff?text=${encodeURIComponent(c.name.replace('Toyota ',''))}`;
+    out += `<details class="c"><summary><div class="cl"><img class="car-photo" src="${c.img}" onerror="this.src='${fallback}'" alt="${c.name}"><div>${c.name}<span class="sb">Klik untuk melihat ${c.items.length} pilihan tipe</span></div></div><span class="ar">▼</span></summary><div class="vs"><div class="vh">Pilih jenis/tipe ${c.name}:</div>${vars}</div></details>`;
   });
 });
 document.getElementById("list").innerHTML = out;
 </script>
 </body>
 </html>
+(Jangan lupa ganti nomor 6281234567890 di baris const WA dan baris top dengan nomor WhatsApp Anda).
+Apakah foto mobil dan daftar variannya sudah tampil dengan baik di halaman Anda sekarang?
