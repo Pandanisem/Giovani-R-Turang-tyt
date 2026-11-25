@@ -1,302 +1,93 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Lengkap Toyota - PT Hasjrat Abadi Kotamobagu</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #f4f5f7;
-            color: #222222;
-            padding-bottom: 3rem;
-        }
-        .top-bar {
-            background-color: #9e000e;
-            color: #ffffff;
-            font-size: 0.85rem;
-            padding: 8px 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .top-bar a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        header {
-            background: linear-gradient(135deg, #d90416 0%, #a3000e 100%);
-            color: #ffffff;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 10px rgba(217, 4, 22, 0.2);
-        }
-        .dealer-badge {
-            display: inline-block;
-            background-color: #ffffff;
-            color: #d90416;
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-weight: 800;
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-        header h1 {
-            font-size: 1.85rem;
-            margin-bottom: 0.4rem;
-        }
-        header p {
-            font-size: 0.95rem;
-            opacity: 0.95;
-        }
-        .container {
-            max-width: 880px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        .guide-text {
-            text-align: center;
-            color: #444;
-            font-size: 0.95rem;
-            margin-bottom: 1.2rem;
-            font-weight: 600;
-            background: #fff;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #e5e5e5;
-        }
-        .section-label {
-            font-size: 1rem;
-            font-weight: 800;
-            color: #d90416;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin: 1.8rem 0 0.8rem 0;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #d90416;
-        }
-        .car-item {
-            background: #ffffff;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            border-left: 5px solid #d90416;
-            overflow: hidden;
-        }
-        .car-header {
-            padding: 1rem 1.2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            user-select: none;
-        }
-        .car-header:hover {
-            background-color: #fff5f5;
-        }
-        .car-header-left {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .car-badge-box {
-            width: 78px;
-            height: 48px;
-            background: #d90416;
-            color: #fff;
-            font-weight: 800;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            border-radius: 6px;
-            padding: 4px;
-            flex-shrink: 0;
-        }
-        .car-cat {
-            font-size: 0.72rem;
-            font-weight: 800;
-            color: #d90416;
-            text-transform: uppercase;
-        }
-        .car-name {
-            font-size: 1.15rem;
-            font-weight: bold;
-            color: #111;
-        }
-        .car-sub {
-            font-size: 0.82rem;
-            color: #666;
-        }
-        .car-arrow {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #d90416;
-            transition: transform 0.25s;
-        }
-        .car-item.open .car-arrow {
-            transform: rotate(180deg);
-        }
-        .variant-list {
-            display: none;
-            background-color: #fafafa;
-            border-top: 1px solid #eeeeee;
-            padding: 1rem 1.2rem;
-        }
-        .car-item.open .variant-list {
-            display: block;
-        }
-        .variant-prompt {
-            font-size: 0.85rem;
-            color: #555;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        .variant-card {
-            background: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            overflow: hidden;
-        }
-        .variant-btn {
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            padding: 11px 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-size: 0.98rem;
-            font-weight: bold;
-            color: #222;
-            gap: 10px;
-        }
-        .variant-btn:hover {
-            background-color: #fff0f1;
-            color: #d90416;
-        }
-        .variant-price-tag {
-            color: #d90416;
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-        .spec-box {
-            display: none;
-            padding: 14px;
-            background-color: #ffffff;
-            border-top: 1px dashed #dddddd;
-        }
-        .variant-card.active .spec-box {
-            display: block;
-        }
-        .spec-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-        }
-        .spec-table td {
-            padding: 7px 6px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .spec-table td:first-child {
-            font-weight: bold;
-            width: 36%;
-            color: #555555;
-        }
-        .btn-wa {
-            display: block;
-            width: 100%;
-            text-align: center;
-            padding: 11px;
-            background-color: #25d366;
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 6px;
-            font-size: 0.92rem;
-        }
-        .btn-wa:hover {
-            background-color: #1ebe5d;
-        }
-        footer {
-            text-align: center;
-            margin-top: 2.5rem;
-            color: #777;
-            font-size: 0.85rem;
-            padding: 0 1rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Katalog Toyota - PT Hasjrat Abadi Kotamobagu</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,sans-serif}
+body{background:#f4f5f7;color:#222;padding-bottom:3rem}
+.top-bar{background:#9e000e;color:#fff;font-size:.85rem;padding:8px 1.2rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.top-bar a{color:#fff;text-decoration:none;font-weight:700}
+header{background:linear-gradient(135deg,#d90416,#a3000e);color:#fff;text-align:center;padding:2rem 1rem;margin-bottom:1.5rem}
+.badge{display:inline-block;background:#fff;color:#d90416;padding:4px 14px;border-radius:20px;font-weight:800;font-size:.82rem;margin-bottom:8px;text-transform:uppercase}
+header h1{font-size:1.8rem;margin-bottom:4px}
+header p{font-size:.92rem;opacity:.95}
+.container{max-width:850px;margin:0 auto;padding:0 1rem}
+.guide{text-align:center;background:#fff;padding:10px;border-radius:8px;border:1px solid #e0e0e0;font-weight:600;font-size:.92rem;margin-bottom:1.2rem}
+.cat-title{font-size:.95rem;font-weight:800;color:#d90416;text-transform:uppercase;margin:1.6rem 0 .7rem;padding-bottom:4px;border-bottom:2px solid #d90416}
+
+/* Tingkat 1: Mobil */
+details.car{background:#fff;border-radius:10px;margin-bottom:10px;box-shadow:0 2px 6px rgba(0,0,0,.05);border-left:5px solid #d90416;overflow:hidden}
+details.car>summary{list-style:none;padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:1.1rem}
+details.car>summary::-webkit-details-marker{display:none}
+details.car>summary:hover{background:#fff5f5}
+.car-left{display:flex;align-items:center;gap:12px}
+.tag{background:#d90416;color:#fff;font-size:.72rem;font-weight:800;padding:6px 8px;border-radius:6px;min-width:68px;text-align:center}
+.sub{display:block;font-size:.8rem;font-weight:400;color:#666;margin-top:2px}
+.arrow{color:#d90416;font-size:.95rem}
+
+/* Tingkat 2: Pilihan Tipe */
+.variants{background:#fafafa;border-top:1px solid #eee;padding:.9rem 1.1rem}
+.v-hint{font-size:.84rem;color:#555;font-weight:600;margin-bottom:8px}
+details.var{background:#fff;border:1px solid #e0e0e0;border-radius:8px;margin-bottom:8px;overflow:hidden}
+details.var>summary{list-style:none;padding:11px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:.95rem;gap:10px}
+details.var>summary::-webkit-details-marker{display:none}
+details.var>summary:hover{background:#fff0f1;color:#d90416}
+.price{color:#d90416;font-size:.9rem;white-space:nowrap}
+
+/* Tingkat 3: Spesifikasi */
+.spec{padding:12px 14px;border-top:1px dashed #ddd;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin-bottom:12px}
+td{padding:6px 4px;border-bottom:1px solid #f0f0f0}
+td:first-child{font-weight:700;color:#555;width:35%}
+.wa{display:block;text-align:center;background:#25d366;color:#fff;text-decoration:none;font-weight:700;padding:10px;border-radius:6px;font-size:.9rem}
+.wa:hover{background:#1ebe5d}
+footer{text-align:center;margin-top:2.5rem;color:#777;font-size:.84rem;padding:0 1rem}
+</style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <span>Dealer Resmi Toyota - Kotamobagu, Sulawesi Utara</span>
-        <a id="topWa" href="#" target="_blank">Hubungi Sales WhatsApp</a>
+<div class="top-bar">
+  <span>Dealer Resmi Toyota - Kotamobagu, Sulawesi Utara</span>
+  <a href="https://wa.me" target="_blank">Hubungi Sales WhatsApp</a>
+</div>
+
+<header>
+  <div class="badge">PT Hasjrat Abadi Kotamobagu</div>
+  <h1>Katalog Lengkap Mobil Toyota</h1>
+  <p>Klik nama mobil untuk melihat pilihan tipe, lalu klik tipenya untuk melihat spesifikasi.</p>
+</header>
+
+<div class="container">
+  <div class="guide">👇 Pilih salah satu mobil Toyota di bawah ini:</div>
+
+  <div class="cat-title">1. Hatchback & City Car</div>
+
+  <details class="car">
+    <summary><div class="car-left"><span class="tag">AGYA</span><div>Toyota New Agya<span class="sub">Klik untuk melihat 4 pilihan tipe</span></div></div><span class="arrow">▼</span></summary>
+    <div class="variants">
+      <div class="v-hint">Pilih jenis/tipe Toyota New Agya:</div>
+      <details class="var"><summary><span>Agya 1.2 E M/T</span><span class="price">Rp 185.000.000 ▾</span></summary><div class="spec"><table><tr><td>Estimasi OTR</td><td><b>Rp 185.000.000</b></td></tr><tr><td>Mesin</td><td>1.198 cc 3-Silinder Dual VVT-i</td></tr><tr><td>Transmisi</td><td>Manual 5-Speed</td></tr><tr><td>Kapasitas</td><td>5 Penumpang</td></tr><tr><td>Fitur Utama</td><td>LED Headlamp, Digital A/C, Dual Airbags, ABS+EBD</td></tr></table><a class="wa" href="https://wa.me?text=Halo%20Hasjrat%20Kotamobagu,%20info%20Agya%201.2%20E%20MT" target="_blank">Tanya Promo & Kredit via WhatsApp</a></div></details>
+      <details class="var"><summary><span>Agya 1.2 G CVT</span><span class="price">Rp 208.000.000 ▾</span></summary><div class="spec"><table><tr><td>Estimasi OTR</td><td><b>Rp 208.000.000</b></td></tr><tr><td>Mesin</td><td>1.198 cc 3-Silinder Dual VVT-i</td></tr><tr><td>Transmisi</td><td>CVT + Paddle Shift</td></tr><tr><td>Kapasitas</td><td>5 Penumpang</td></tr><tr><td>Fitur Utama</td><td>Smart Entry, Push Start Button, Head Unit 7", Velg 14"</td></tr></table><a class="wa" href="https://wa.me?text=Halo%20Hasjrat%20Kotamobagu,%20info%20Agya%201.2%20G%20CVT" target="_blank">Tanya Promo & Kredit via WhatsApp</a></div></details>
+      <details class="var"><summary><span>Agya 1.2 Stylix G CVT</span><span class="price">Rp 213.000.000 ▾</span></summary><div class="spec"><table><tr><td>Estimasi OTR</td><td><b>Rp 213.000.000</b></td></tr><tr><td>Mesin</td><td>1.198 cc 3-Silinder Dual VVT-i</td></tr><tr><td>Transmisi</td><td>CVT + Paddle Shift</td></tr><tr><td>Kapasitas</td><td>5 Penumpang</td></tr><tr><td>Fitur Utama</td><td>Aero Skirt Package, Follow Me Home Light, Power Mode</td></tr></table><a class="wa" href="https://wa.me?text=Halo%20Hasjrat%20Kotamobagu,%20info%20Agya%20Stylix%20G%20CVT" target="_blank">Tanya Promo & Kredit via WhatsApp</a></div></details>
+      <details class="var"><summary><span>Agya 1.2 GR Sport CVT</span><span class="price">Rp 268.000.000 ▾</span></summary><div class="spec"><table><tr><td>Estimasi OTR</td><td><b>Rp 268.000.000</b></td></tr><tr><td>Mesin</td><td>1.198 cc 3-Silinder Dual VVT-i</td></tr><tr><td>Transmisi</td><td>CVT + Paddle Shift</td></tr><tr><td>Kapasitas</td><td>5 Penumpang</td></tr><tr><td>Fitur Utama</td><td>GR Aero Kit, GR Tuned Suspension, Wireless Charger, Velg 15"</td></tr></table><a class="wa" href="https://wa.me?text=Halo%20Hasjrat%20Kotamobagu,%20info%20Agya%20GR%20Sport" target="_blank">Tanya Promo & Kredit via WhatsApp</a></div></details>
     </div>
+  </details>
 
-    <header>
-        <div class="dealer-badge">PT Hasjrat Abadi Kotamobagu</div>
-        <h1>Katalog Lengkap Mobil Toyota</h1>
-        <p>Klik nama mobil untuk membuka semua pilihan tipe, lalu klik tipenya untuk melihat spesifikasi.</p>
-    </header>
-
-    <div class="container">
-        <div class="guide-text">👇 Pilih salah satu mobil Toyota di bawah ini:</div>
-        <div id="katalogContainer"></div>
+  <details class="car">
+    <summary><div class="car-left"><span class="tag">YARIS</span><div>Toyota New Yaris GR Sport<span class="sub">Klik untuk melihat 2 pilihan tipe</span></div></div><span class="arrow">▼</span></summary>
+    <div class="variants">
+      <div class="v-hint">Pilih jenis/tipe Toyota New Yaris:</div>
+      <details class="var"><summary><span>Yaris 1.5 S CVT GR Sport (3 Airbags)</span><span class="price">Rp 358.000.000 ▾</span></summary><div class="spec"><table><tr><td>Estimasi OTR</td><td><b>Rp 358.000.000</b></td></tr><tr><td>Mesin</td><td>1.496 cc 4-Silinder Dual VVT-i</td></tr><tr><td>Transmisi</td><td>CVT 7-Speed</td></tr><tr><td>Kapasitas</td><td>5 Penumpang</td></tr><tr><td>Fitur Utama</td><td>GR Body Kit, Head Unit 9", Panoramic View Monitor</td></tr></table><a class="wa" href="https://wa.me?text=Halo%20Hasjrat%20Kotamobagu,%20info%20Yaris%20GR%20Sport" target="_blank">Tanya Promo & Kredit via WhatsApp</a></div></details>
+      <details class="var"><summary><span>Yaris 1.5 S CVT GR Sport (7 Airbags)</span><span class="price">Rp 365.000.000 ▾</span></summary><div class="spec"><table><tr><td>Estimasi OTR</td><td><b>Rp 365.000.000</b></td></tr><tr><td>Mesin</td><td>1.496 cc 4-Silinder Dual VVT-i</td></tr><tr><td>Transmisi</td><td>CVT 7-Speed</td></tr><tr><td>Kapasitas</td><td>5 Penumpang</td></tr><tr><td>Fitur Utama</td><td>7 Airbags, Half Leather Seat, Paddle Shift, VSC & HSA</td></tr></table><a class="wa" href="https://wa.me?text=Halo%20Hasjrat%20Kotamobagu,%20info%20Yaris%20GR%207%20Airbags" target="_blank">Tanya Promo & Kredit via WhatsApp</a></div></details>
     </div>
+  </details>
 
-    <footer>
-        &copy; 2026 PT Hasjrat Abadi Kotamobagu. Estimasi harga OTR dapat berubah sewaktu-waktu.
-    </footer>
+  <div class="cat-title">2. MPV & Mobil Keluarga</div>
 
-    <script>
-        // GANTI NOMOR WHATSAPP SALES DI BAWAH INI (awali dengan 62)
-        const NOMOR_WA = "6281234567890";
-        document.getElementById("topWa").href = "https://wa.me" + NOMOR_WA;
-
-        const dataToyota = [
-            {
-                kategori: "1. Hatchback & City Car",
-                mobil: [
-                    {
-                        nama: "Toyota New Agya",
-                        kode: "AGYA",
-                        tipe: [
-                            { nama: "Agya 1.2 E M/T", harga: "Rp 185.000.000", mesin: "1.198 cc 3-Silinder Dual VVT-i", trans: "Manual 5-Speed", kursi: "5 Penumpang", fitur: "LED Headlamp, Digital A/C, Dual Airbags, ABS+EBD" },
-                            { nama: "Agya 1.2 G CVT", harga: "Rp 208.000.000", mesin: "1.198 cc 3-Silinder Dual VVT-i", trans: "CVT + Paddle Shift", kursi: "5 Penumpang", fitur: "Smart Entry, Push Start Button, Head Unit 7 Inci" },
-                            { nama: "Agya 1.2 Stylix G CVT", harga: "Rp 213.000.000", mesin: "1.198 cc 3-Silinder Dual VVT-i", trans: "CVT + Paddle Shift", kursi: "5 Penumpang", fitur: "Aero Skirt Package, Follow Me Home Light, Power Mode" },
-                            { nama: "Agya 1.2 GR Sport CVT", harga: "Rp 268.000.000", mesin: "1.198 cc 3-Silinder Dual VVT-i", trans: "CVT + Paddle Shift", kursi: "5 Penumpang", fitur: "GR Aero Kit, GR Tuned Suspension, Wireless Charger, Velg 15\"" }
-                        ]
-                    },
-                    {
-                        nama: "Toyota New Yaris GR Sport",
-                        kode: "YARIS",
-                        tipe: [
-                            { nama: "Yaris 1.5 S CVT GR Sport (3 Airbags)", harga: "Rp 358.000.000", mesin: "1.496 cc 4-Silinder Dual VVT-i", trans: "CVT 7-Speed", kursi: "5 Penumpang", fitur: "GR Body Kit, Head Unit 9\", Panoramic View Monitor" },
-                            { nama: "Yaris 1.5 S CVT GR Sport (7 Airbags)", harga: "Rp 365.000.000", mesin: "1.496 cc 4-Silinder Dual VVT-i", trans: "CVT 7-Speed", kursi: "5 Penumpang", fitur: "7 Airbags, Half Leather Seat, Paddle Shift, VSC & HSA" }
-                        ]
-                    }
-                ]
-            },
-            {
-                kategori: "2. MPV & Mobil Keluarga",
-                mobil: [
-                    {
-                        nama: "Toyota New Calya",
-                        kode: "CALYA",
-                        tipe: [
+  <details class="car">
+    <summary><div class="car-left"><span class="tag">CALYA</span><div>Toyota New Calya<span class="sub">Klik untuk melihat 3 pilihan tipe</span></div></div><span class="arrow">▼</span></summary>
+    <div class="variants">
+      <div class="v-hint">Pilih jenis/tipe Toyota New Calya:</div>
+      <details class="var"><summary><span>Calya 1.2 E M/T</span><span class="price">Rp 182.000.000 ▾</span></summary><div class="spec"><table><tr><td>Estimasi OTR</td><td><b>Rp 182.000.000</b></td></tr><tr><td>Mesin</td><td>1.197 cc Dual VVT-i</td></tr><tr><td>Transmisi</td><td>Manual 5-Speed</td></tr><tr><td>Kapasitas</td><td>7 Penumpang</td></tr><tr><td>Fitur Utama</td><td>LED Headlamp, Rear Air Circulator, Dual Airbags, ABS+EBD</td></tr></table><a class="wa" href="https://wa.me?text=Halo%20Hasjrat%20Kotamobagu,%20info%20Calya%201.2%20E%20MT" target="_blank">Tanya Promo & Kredit via WhatsApp</a></div></details>
