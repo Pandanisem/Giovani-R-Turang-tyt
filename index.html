@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Toyota - PT Hasjrat Abadi Kotamobagu</title>
+    <title>Katalog Lengkap Toyota - PT Hasjrat Abadi Kotamobagu</title>
     <style>
         * {
             box-sizing: border-box;
@@ -56,7 +56,7 @@
             text-transform: uppercase;
         }
         header h1 {
-            font-size: 1.9rem;
+            font-size: 1.85rem;
             margin-bottom: 0.4rem;
         }
         header p {
@@ -66,29 +66,43 @@
 
         /* Kontainer Utama */
         .container {
-            max-width: 850px;
+            max-width: 880px;
             margin: 0 auto;
             padding: 0 1rem;
         }
         .guide-text {
             text-align: center;
-            color: #555;
+            color: #444;
             font-size: 0.95rem;
             margin-bottom: 1.2rem;
             font-weight: 600;
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #e5e5e5;
+        }
+        .section-label {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #d90416;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 1.8rem 0 0.8rem 0;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #d90416;
         }
 
         /* Item List Mobil (Tingkat 1) */
         .car-item {
             background: #ffffff;
             border-radius: 10px;
-            margin-bottom: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
             border-left: 5px solid #d90416;
             overflow: hidden;
         }
         .car-header {
-            padding: 1.1rem 1.3rem;
+            padding: 1rem 1.2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -104,25 +118,30 @@
             gap: 14px;
         }
         .car-thumb {
-            width: 75px;
+            width: 78px;
             height: 50px;
             object-fit: cover;
             border-radius: 6px;
             background: #eee;
+            flex-shrink: 0;
         }
         .car-cat {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 800;
             color: #d90416;
             text-transform: uppercase;
         }
         .car-name {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: bold;
             color: #111;
         }
+        .car-sub {
+            font-size: 0.82rem;
+            color: #666;
+        }
         .car-arrow {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             color: #d90416;
             transition: transform 0.25s;
@@ -136,20 +155,20 @@
             display: none;
             background-color: #fafafa;
             border-top: 1px solid #eeeeee;
-            padding: 1rem 1.3rem;
+            padding: 1rem 1.2rem;
         }
         .car-item.open .variant-list {
             display: block;
         }
         .variant-prompt {
-            font-size: 0.88rem;
-            color: #666;
+            font-size: 0.85rem;
+            color: #555;
             margin-bottom: 10px;
             font-weight: 600;
         }
         .variant-card {
             background: #ffffff;
-            border: 1px solid #e2e2e2;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
             margin-bottom: 8px;
             overflow: hidden;
@@ -159,14 +178,15 @@
             text-align: left;
             background: none;
             border: none;
-            padding: 12px 15px;
+            padding: 11px 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.98rem;
             font-weight: bold;
             color: #222;
+            gap: 10px;
         }
         .variant-btn:hover {
             background-color: #fff0f1;
@@ -174,13 +194,14 @@
         }
         .variant-price-tag {
             color: #d90416;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
         }
 
         /* Detail Spesifikasi (Tingkat 3) */
         .spec-box {
             display: none;
-            padding: 15px;
+            padding: 14px;
             background-color: #ffffff;
             border-top: 1px dashed #dddddd;
         }
@@ -190,16 +211,16 @@
         .spec-table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 14px;
-            font-size: 0.92rem;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
         }
         .spec-table td {
-            padding: 8px 6px;
+            padding: 7px 6px;
             border-bottom: 1px solid #f0f0f0;
         }
         .spec-table td:first-child {
             font-weight: bold;
-            width: 38%;
+            width: 36%;
             color: #555555;
         }
         .btn-wa {
@@ -212,7 +233,7 @@
             text-decoration: none;
             font-weight: bold;
             border-radius: 6px;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
         }
         .btn-wa:hover {
             background-color: #1ebe5d;
@@ -236,12 +257,14 @@
 
     <header>
         <div class="dealer-badge">PT Hasjrat Abadi Kotamobagu</div>
-        <h1>Daftar Harga & Spesifikasi Toyota</h1>
-        <p>Pilih model mobil di bawah ini untuk melihat tipe dan spesifikasi lengkap.</p>
+        <h1>Katalog Lengkap Mobil Toyota</h1>
+        <p>Klik nama mobil untuk melihat tipe, lalu klik tipenya untuk membuka spesifikasi & harga.</p>
     </header>
 
     <div class="container">
-        <div class="guide-text">👇 Klik nama mobil untuk melihat pilihan tipe:</div>
+        <div class="guide-text">👇 Pilih model mobil Toyota di bawah ini:</div>
+
+        <div class="section-label">1. Hatchback & City Car</div>
 
         <div class="car-item">
             <div class="car-header" onclick="toggleCar(this)">
@@ -249,14 +272,14 @@
                     <img class="car-thumb" src="https://placehold.co" alt="Agya">
                     <div>
                         <div class="car-cat">Hatchback</div>
-                        <div class="car-name">Toyota Agya</div>
+                        <div class="car-name">Toyota New Agya</div>
+                        <div class="car-sub">Tersedia 4 Tipe (E, G, Stylix, GR Sport)</div>
                     </div>
                 </div>
                 <div class="car-arrow">▼</div>
             </div>
             <div class="variant-list">
-                <div class="variant-prompt">Pilih jenis/tipe Toyota Agya:</div>
-                
+                <div class="variant-prompt">Pilih jenis/tipe Toyota New Agya:</div>
                 <div class="variant-card">
                     <button class="variant-btn" onclick="toggleSpec(this)">
                         <span>Agya 1.2 E M/T</span>
@@ -264,35 +287,22 @@
                     </button>
                     <div class="spec-box">
                         <table class="spec-table">
-                            <tr><td>Harga OTR</td><td><strong>Rp 185.000.000</strong></td></tr>
+                            <tr><td>Estimasi OTR</td><td><strong>Rp 185.000.000</strong></td></tr>
                             <tr><td>Mesin</td><td>1.198 cc, 3-Silinder, Dual VVT-i</td></tr>
                             <tr><td>Transmisi</td><td>Manual 5-Percepatan</td></tr>
                             <tr><td>Kapasitas</td><td>5 Penumpang</td></tr>
-                            <tr><td>Fitur Utama</td><td>LED Headlamp, Digital A/C, Dual SRS Airbag, ABS+EBD</td></tr>
+                            <tr><td>Fitur Utama</td><td>LED Headlamp, Digital A/C, Dual Airbags, ABS+EBD</td></tr>
                         </table>
-                        <a class="btn-wa" href="https://wa.me?text=Halo%20PT%20Hasjrat%20Abadi%20Kotamobagu,%20saya%20minat%20Toyota%20Agya%201.2%20E%20M/T" target="_blank">Tanya Promo & Kredit via WhatsApp</a>
+                        <a class="btn-wa" href="https://wa.me?text=Halo%20Hasjrat%20Kotamobagu,%20info%20Toyota%20Agya%201.2%20E%20MT" target="_blank">Tanya Promo & Kredit via WhatsApp</a>
                     </div>
                 </div>
-
                 <div class="variant-card">
                     <button class="variant-btn" onclick="toggleSpec(this)">
                         <span>Agya 1.2 G CVT</span>
-                        <span class="variant-price-tag">Rp 205.000.000 ▾</span>
+                        <span class="variant-price-tag">Rp 208.000.000 ▾</span>
                     </button>
                     <div class="spec-box">
                         <table class="spec-table">
-                            <tr><td>Harga OTR</td><td><strong>Rp 205.000.000</strong></td></tr>
+                            <tr><td>Estimasi OTR</td><td><strong>Rp 208.000.000</strong></td></tr>
                             <tr><td>Mesin</td><td>1.198 cc, 3-Silinder, Dual VVT-i</td></tr>
                             <tr><td>Transmisi</td><td>CVT dengan Paddle Shift</td></tr>
-                            <tr><td>Kapasitas</td><td>5 Penumpang</td></tr>
-                            <tr><td>Fitur Utama</td><td>Smart Entry, Push Start Button, Head Unit 7 Inci, Velg Alloy 14"</td></tr>
-                        </table>
-                        <a class="btn-wa" href="https://wa.me?text=Halo%20PT%20Hasjrat%20Abadi%20Kotamobagu,%20saya%20minat%20Toyota%20Agya%201.2%20G%20CVT" target="_blank">Tanya Promo & Kredit via WhatsApp</a>
-                    </div>
-                </div>
-
-                <div class="variant-card">
-                    <button class="variant-btn" onclick="toggleSpec(this)">
-                        <span>Agya 1.2 GR Sport CVT</span>
-                        <span class="variant-price-tag">Rp 265.000.000 ▾</span>
-                    </button>
