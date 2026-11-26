@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
 <title>Katalog Toyota - PT Hasjrat Abadi Kotamobagu</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,sans-serif}
@@ -47,7 +46,7 @@ footer{text-align:center;margin-top:2.5rem;color:#777;font-size:.84rem;padding:0
 <body>
 <div class="top">
   <span>Dealer Resmi Toyota - Kotamobagu, Sulawesi Utara</span>
-  <a id="topWa" href="https://whatsapp.com" target="_blank" rel="noopener">Hubungi Sales WhatsApp</a>
+  <a href="https://wa.me." target="_blank" rel="noopener">Hubungi Sales WhatsApp</a>
 </div>
 <header>
   <div class="badge">PT Hasjrat Abadi Kotamobagu</div>
@@ -64,124 +63,129 @@ footer{text-align:center;margin-top:2.5rem;color:#777;font-size:.84rem;padding:0
 <footer>&copy; 2026 PT Hasjrat Abadi Kotamobagu. Estimasi harga OTR dapat berubah sewaktu-waktu.</footer>
 <script>
 const WA = "628891261808";
-function waLink(pesan) {
-  return "https://whatsapp.com" + WA + "&text=" + encodeURIComponent(pesan);
-}
-document.getElementById("topWa").href = waLink("Halo PT Hasjrat Abadi Kotamobagu, saya ingin bertanya info unit & promo mobil Toyota.");
-
-function getPhoto(fileName) {
-  const rawUrl = "https://wikimedia.org" + encodeURIComponent(fileName);
-  return "https://wsrv.nl" + encodeURIComponent(rawUrl) + "&w=300&h=200&fit=cover&output=webp";
-}
-
 const DATA = [
   { c: "1. Hatchback & City Car", u: [
-    { n: "Toyota New Agya", f: "2023_Toyota_Agya_1.2_GR_Sport_(A351RA,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota New Agya", w: "Toyota Agya", v: [
       "Agya 1.2 E M/T|Rp 185.000.000|1.198 cc 3-Silinder Dual VVT-i|Manual 5-Speed|5 Penumpang|LED Headlamp, Digital A/C, Dual Airbags, ABS+EBD",
       "Agya 1.2 G CVT|Rp 208.000.000|1.198 cc 3-Silinder Dual VVT-i|CVT + Paddle Shift|5 Penumpang|Smart Entry, Push Start Button, Head Unit 7 Inci",
       "Agya 1.2 Stylix G CVT|Rp 213.000.000|1.198 cc 3-Silinder Dual VVT-i|CVT + Paddle Shift|5 Penumpang|Aero Skirt Package, Follow Me Home Light, Power Mode",
       "Agya 1.2 GR Sport CVT|Rp 268.000.000|1.198 cc 3-Silinder Dual VVT-i|CVT + Paddle Shift|5 Penumpang|GR Aero Kit, GR Tuned Suspension, Wireless Charger, Velg 15"
     ]},
-    { n: "Toyota New Yaris GR Sport", f: "2021_Toyota_Yaris_1.5_S_GR_Sport_(NSP151R,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota New Yaris GR Sport", w: "Toyota Yaris", v: [
       "Yaris 1.5 S CVT GR Sport (3 Airbags)|Rp 358.000.000|1.496 cc 4-Silinder Dual VVT-i|CVT 7-Speed|5 Penumpang|GR Body Kit, Head Unit 9 Inci, Panoramic View Monitor",
       "Yaris 1.5 S CVT GR Sport (7 Airbags)|Rp 365.000.000|1.496 cc 4-Silinder Dual VVT-i|CVT 7-Speed|5 Penumpang|7 Airbags, Half Leather Seat, Paddle Shift, VSC & HSA"
     ]}
   ]},
   { c: "2. MPV & Mobil Keluarga", u: [
-    { n: "Toyota New Calya", f: "2022_Toyota_Calya_1.2_G_(B401RA,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota New Calya", w: "Toyota Calya", v: [
       "Calya 1.2 E M/T|Rp 182.000.000|1.197 cc Dual VVT-i|Manual 5-Speed|7 Penumpang|LED Headlamp, Rear Air Circulator, Dual Airbags, ABS+EBD",
       "Calya 1.2 G M/T|Rp 191.000.000|1.197 cc Dual VVT-i|Manual 5-Speed|7 Penumpang|Head Unit Touchscreen, Kamera Mundur, Retractable Mirror",
       "Calya 1.2 G A/T|Rp 205.000.000|1.197 cc Dual VVT-i|Otomatis 4-Speed|7 Penumpang|Transmisi Matik, Sensor Parkir, Audio Steering Switch"
     ]},
-    { n: "Toyota All New Avanza", f: "2021_Toyota_Avanza_1.5_G_TSS_(W101RE,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota All New Avanza", w: "Toyota Avanza", v: [
       "Avanza 1.3 E M/T|Rp 255.000.000|1.329 cc Dual VVT-i|Manual 5-Speed|7 Penumpang|LED Headlamp, Digital A/C, Dual Airbags, VSC & HSA",
       "Avanza 1.5 G M/T|Rp 278.000.000|1.496 cc Dual VVT-i|Manual 5-Speed|7 Penumpang|Head Unit 9 Inci, Push Start Button, Velg Alloy 16",
       "Avanza 1.5 G CVT|Rp 292.000.000|1.496 cc Dual VVT-i|CVT|7 Penumpang|Long Sofa Mode, Kamera Mundur, Smart Entry",
       "Avanza 1.5 G CVT TSS|Rp 318.000.000|1.496 cc Dual VVT-i|CVT|7 Penumpang|Toyota Safety Sense (TSS), 6 Airbags, Blind Spot Monitor"
     ]},
-    { n: "Toyota All New Veloz", f: "2021_Toyota_Veloz_1.5_Q_TSS_(W101RE,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota All New Veloz", w: "Toyota Veloz", v: [
       "Veloz 1.5 M/T|Rp 308.000.000|1.496 cc Dual VVT-i|Manual 5-Speed|7 Penumpang|Electric Parking Brake, Wireless Charger, Full LED",
       "Veloz 1.5 Q CVT|Rp 335.000.000|1.496 cc Dual VVT-i|CVT|7 Penumpang|All Round View Camera 360, Rear Seat Entertainment",
       "Veloz 1.5 Q CVT TSS|Rp 358.000.000|1.496 cc Dual VVT-i|CVT|7 Penumpang|Toyota Safety Sense (TSS), 6 Airbags, Leather Combi Seat"
     ]},
-    { n: "Toyota Kijang Innova Reborn", f: "2021_Toyota_Kijang_Innova_2.4_V_(GUN142R,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota Kijang Innova Reborn", w: "Toyota Innova", v: [
       "Innova 2.4 G M/T Diesel|Rp 432.000.000|2.393 cc 2GD-FTV Diesel Turbo|Manual 5-Speed|7 Penumpang|Mesin Diesel Tangguh, Eco & Power Mode, Dual Airbags",
       "Innova 2.4 G A/T Diesel|Rp 453.000.000|2.393 cc 2GD-FTV Diesel Turbo|Otomatis 6-Speed|7 Penumpang|Transmisi Matik 6-Speed, Head Unit 8 Inci, Auto A/C"
     ]},
-    { n: "Toyota Kijang Innova Zenix", f: "2022_Toyota_Kijang_Innova_Zenix_2.0_Q_HV_Modellista_(MAGH10R,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota Kijang Innova Zenix", w: "Toyota Innova Zenix", v: [
       "Innova Zenix 2.0 G CVT (Bensin)|Rp 448.000.000|1.987 cc Dynamic Force|CVT 10-Speed|7 Penumpang|Platform TNGA, Electric Parking Brake, LED Projector",
       "Innova Zenix 2.0 V CVT (Bensin)|Rp 495.000.000|1.987 cc Dynamic Force|CVT 10-Speed|7 Penumpang|Dual Rear Seat Entertainment 10 Inci, Ambient Light",
       "Innova Zenix 2.0 V HV Modellista (Hybrid)|Rp 565.000.000|1.987 cc Hybrid Gen-5|e-CVT|7 Penumpang|Panoramic Sunroof, Bodykit Modellista, Kamera 360",
       "Innova Zenix 2.0 Q HV Modellista TSS|Rp 648.000.000|1.987 cc Hybrid Gen-5|e-CVT|7 Penumpang|Captain Seat + Ottoman, Power Backdoor Voice Command, TSS 3.0"
     ]},
-    { n: "Toyota Voxy, Alphard & Vellfire", f: "2022_Toyota_Voxy_2.0_(MZRA90R,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota Voxy, Alphard & Vellfire", w: "Toyota Alphard", v: [
       "All New Voxy 2.0 CVT|Rp 645.000.000|1.986 cc Dynamic Force|CVT|7 Penumpang|Dual Power Sliding Door, Kick Sensor, TSS 3.0",
       "All New Alphard 2.5 HEV (Hybrid)|Rp 1.765.000.000|2.487 cc Hybrid|e-CVT|7 Penumpang|Executive Power Seat, Dual Sunroof, JBL Audio, TSS 3.0",
       "All New Vellfire 2.5 VIP HEV (Hybrid)|Rp 1.880.000.000|2.487 cc Hybrid|e-CVT|7 Penumpang|Executive Lounge Seat, Exclusive Black Chrome Grille, TSS 3.0"
     ]}
   ]},
   { c: "3. SUV, Crossover & Listrik (EV)", u: [
-    { n: "Toyota Raize", f: "2021_Toyota_Raize_1.0T_GR_Sport_(A250RA,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota Raize", w: "Toyota Raize", v: [
       "Raize 1.2 G CVT|Rp 267.000.000|1.198 cc 3-Silinder|CVT|5 Penumpang|Head Unit 8 Inci, Digital MID 7 Inci, Smart Entry, Velg 16",
       "Raize 1.0T G CVT (Turbo)|Rp 288.000.000|998 cc 3-Silinder Turbo|CVT + Paddle Shift|5 Penumpang|Mesin Turbo Responsif, Velg 17 Inci, Auto A/C",
       "Raize 1.0T GR Sport CVT TSS|Rp 325.000.000|998 cc 3-Silinder Turbo|CVT + Paddle Shift|5 Penumpang|GR Aero Kit, Toyota Safety Sense, Adaptive Cruise Control"
     ]},
-    { n: "Toyota New Rush GR Sport", f: "2021_Toyota_Rush_1.5_S_GR_Sport_(F800RE,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota New Rush GR Sport", w: "Toyota Rush", v: [
       "Rush 1.5 G A/T|Rp 310.000.000|1.496 cc Dual VVT-i|Otomatis 4-Speed|7 Penumpang|6 Airbags, Ground Clearance 220mm, VSC & HSA",
       "Rush 1.5 S M/T GR Sport|Rp 314.000.000|1.496 cc Dual VVT-i|Manual 5-Speed|7 Penumpang|GR Body Kit, Smart Entry, 8 Speakers",
       "Rush 1.5 S A/T GR Sport|Rp 326.000.000|1.496 cc Dual VVT-i|Otomatis 4-Speed|7 Penumpang|GR Body Kit, Smart Entry, Idling Stop System"
     ]},
-    { n: "Toyota All New Yaris Cross", f: "2023_Toyota_Yaris_Cross_1.5_S_GR_Sport_HV_(NYC200R,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota All New Yaris Cross", w: "Toyota Yaris Cross", v: [
       "Yaris Cross 1.5 G CVT (Bensin)|Rp 378.000.000|1.496 cc 4-Silinder|CVT|5 Penumpang|Electric Parking Brake, Head Unit 10.1 Inci, 6 Airbags",
       "Yaris Cross 1.5 S CVT TSS (Bensin)|Rp 425.000.000|1.496 cc 4-Silinder|CVT + Paddle Shift|5 Penumpang|Power Backdoor Kick Sensor, Toyota Safety Sense",
       "Yaris Cross 1.5 S GR HV CVT TSS (Hybrid)|Rp 472.000.000|1.496 cc Hybrid|e-CVT|5 Penumpang|Panoramic Glass Roof, GR Aero Kit, Kamera 360"
     ]},
-    { n: "Toyota New Fortuner 2.8", f: "2022_Toyota_Fortuner_2.8_VRZ_GR_Sport_(GUN166R,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota New Fortuner 2.8", w: "Toyota Fortuner", v: [
       "Fortuner 2.4 G M/T 4x2|Rp 592.000.000|2.393 cc 2GD-FTV Diesel|Manual 6-Speed|7 Penumpang|Bi-Beam LED, Hill Start Assist, Trailer Sway Control",
       "Fortuner 2.8 VRZ 4x2 A/T|Rp 665.000.000|2.755 cc 1GD-FTV Diesel|Otomatis 6-Speed|7 Penumpang|Power Backdoor Kick Sensor, Dual Zone A/C, Jok Kulit",
       "Fortuner 2.8 VRZ 4x2 GR Sport TSS|Rp 692.000.000|2.755 cc 1GD-FTV Diesel|Otomatis 6-Speed|7 Penumpang|GR Body Kit, Toyota Safety Sense, Rear Seat Entertainment",
       "Fortuner 2.8 VRZ 4x4 GR Sport TSS|Rp 785.000.000|2.755 cc 1GD-FTV Diesel|Otomatis 6-Speed 4WD|7 Penumpang|4WD Switch, GR Monotube Suspension, Downhill Assist Control"
     ]},
-    { n: "Corolla Cross, RAV4 & bZ4X EV", f: "2023_Toyota_Corolla_Cross_1.8_GR_Sport_HEV_(ZVG10R,_Indonesia)_front_view.jpg", v: [
+    { n: "Corolla Cross, RAV4 & bZ4X EV", w: "Toyota Corolla Cross", v: [
       "Corolla Cross 1.8 GR Sport HEV|Rp 628.000.000|1.798 cc Hybrid|e-CVT|5 Penumpang|Power Moonroof, GR Sport Styling, TSS",
       "All New RAV4 GR Sport PHEV|Rp 1.165.000.000|2.487 cc Plug-in Hybrid AWD|e-CVT|5 Penumpang|EV Mode ±65 km, E-Four AWD, Panoramic Sunroof, TSS",
       "All New bZ4X Panoramic Roof (Full Listrik)|Rp 1.215.000.000|Full Electric 150 kW (71.4 kWh)|Single Speed|5 Penumpang|100% Listrik (±500 km), Panoramic Roof, TSS 3.0"
     ]},
-    { n: "Toyota Land Cruiser 300", f: "2022_Toyota_Land_Cruiser_300_GR_Sport_(FJA300,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota Land Cruiser 300", w: "Toyota Land Cruiser", v: [
       "Land Cruiser 300 VX-R 4x4 A/T|Rp 2.610.000.000|3.346 cc V6 Twin-Turbo Diesel|Otomatis 10-Speed 4WD|7 Penumpang|Multi-Terrain Select, JBL 14 Speakers, Rear Seat Entertainment",
       "Land Cruiser 300 GR-S 4x4 A/T|Rp 2.685.000.000|3.346 cc V6 Twin-Turbo Diesel|Otomatis 10-Speed 4WD|7 Penumpang|E-KDSS Suspension, Front & Rear Diff Lock, GR Exclusive Interior"
     ]}
   ]},
   { c: "4. Sedan & Gazoo Racing (GR Sports Car)", u: [
-    { n: "Vios, Corolla Altis & Camry Hybrid", f: "2023_Toyota_Vios_1.5_G_TSS_(NGC102R,_Indonesia)_front_view.jpg", v: [
+    { n: "Vios, Corolla Altis & Camry Hybrid", w: "Toyota Camry", v: [
       "All New Vios 1.5 G CVT TSS|Rp 396.000.000|1.496 cc Dual VVT-i|CVT|5 Penumpang|Fastback Design, Electric Parking Brake, TSS, 6 Airbags",
       "Corolla Altis 1.8 HEV A/T (Hybrid)|Rp 645.000.000|1.798 cc Hybrid|e-CVT|5 Penumpang|Platform TNGA, Head-Up Display, Wireless Charger, TSS",
       "All New Camry 2.5 HEV A/T (Hybrid)|Rp 965.000.000|2.487 cc Hybrid|e-CVT|5 Penumpang|Executive Rear Seat Control, Panoramic Sunroof, JBL Audio"
     ]},
-    { n: "Toyota GR Yaris, GR Corolla & GR Supra", f: "2021_Toyota_GR_Supra_3.0_(DB42,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota GR Yaris, GR Corolla & GR Supra", w: "Toyota GR Supra", v: [
       "New GR Yaris 1.6 Turbo GR-Four|Rp 1.180.000.000|1.618 cc 3-Silinder Turbo (300 PS)|Manual 6-Speed / DAT 8-Speed|4 Penumpang|GR-Four 4WD, Torsen LSD, Carbon Fiber Roof",
       "GR Corolla 1.6 Turbo GR-Four|Rp 1.365.000.000|1.618 cc 3-Silinder Turbo (300 PS)|Manual 6-Speed iMT|5 Penumpang|Triple Exhaust, GR-Four AWD, Circuit-Tuned Suspension",
       "GR Supra 3.0L A/T|Rp 2.265.000.000|2.998 cc 6-Silinder Twin-Scroll Turbo|Otomatis 8-Speed|2 Penumpang|387 PS, Adaptive Variable Suspension, JBL 12 Speakers"
     ]}
   ]},
   { c: "5. Commercial & Niaga", u: [
-    { n: "Toyota All New Hilux Rangga", f: "2024_Toyota_Hilux_Rangga_2.4_DSL_High_(Indonesia)_front_view.jpg", v: [
+    { n: "Toyota All New Hilux Rangga", w: "Toyota Hilux Champ", v: [
       "Hilux Rangga 2.0 Standard M/T (Bensin)|Rp 205.000.000|1.998 cc 1TR-FE Bensin|Manual 5-Speed|2-3 Penumpang|Bak Luas & Kokoh, Radius Putar Kecil, Perawatan Mudah",
       "Hilux Rangga 2.4 DSL Standard M/T|Rp 262.000.000|2.393 cc 2GD-FTV Diesel|Manual 5-Speed|2-3 Penumpang|Mesin Diesel Torsi Besar, Daya Angkut 1,2 Ton",
       "Hilux Rangga 2.4 DSL High A/T|Rp 318.000.000|2.393 cc 2GD-FTV Diesel|Otomatis 6-Speed|2 Penumpang|Transmisi Matik, A/C, Power Window, ABS+EBD"
     ]},
-    { n: "Toyota Hilux Single & Double Cabin", f: "2021_Toyota_Hilux_2.4_V_Double_Cabin_(GUN125R,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota Hilux Single & Double Cabin", w: "Toyota Hilux", v: [
       "Hilux Single Cabin 2.0 M/T (4x2)|Rp 298.000.000|1.998 cc Dual VVT-i|Manual 5-Speed|2 Penumpang|Bak Kargo Besar, Dual Airbags, ABS+EBD",
       "Hilux Single Cabin 2.4 DSL 4x4 M/T|Rp 422.000.000|2.393 cc 2GD-FTV Diesel|Manual 5-Speed 4WD|2 Penumpang|Penggerak 4x4, Rear Differential Lock, Medan Berat",
       "Hilux Double Cabin 2.4 G 4x4 M/T|Rp 505.000.000|2.393 cc 2GD-FTV Diesel|Manual 6-Speed 4WD|5 Penumpang|4x4 Switch, Velg Alloy 17 Inci, Foglamp, Heavy Duty",
       "Hilux Double Cabin 2.4 V 4x4 A/T|Rp 552.000.000|2.393 cc 2GD-FTV Diesel|Otomatis 6-Speed 4WD|5 Penumpang|Jok Kulit, LED Headlamp, Hill Start Assist, VSC"
     ]},
-    { n: "Toyota HiAce Commuter & Premio", f: "2019_Toyota_HiAce_Premio_(GDH322R,_Indonesia)_front_view.jpg", v: [
+    { n: "Toyota HiAce Commuter & Premio", w: "Toyota HiAce", v: [
       "HiAce Commuter M/T|Rp 585.000.000|2.755 cc 1GD-FTV Diesel|Manual 6-Speed|16 Penumpang|Kabin Luas untuk Travel/Pariwisata, A/C Plafon Merata",
       "HiAce Premio 2.8 M/T|Rp 678.000.000|2.755 cc 1GD-FTV Diesel|Manual 6-Speed|12 Penumpang|Desain Semi-Bonnet Mewah, Suspensi Nyaman, VSC & HSA"
     ]}
   ]}
 ];
+
+const CACHE = {};
+async function loadWikiPhoto(imgEl, title) {
+  if (CACHE[title]) { imgEl.src = CACHE[title]; return; }
+  try {
+    const res = await fetch(`https://wikipedia.org{encodeURIComponent(title)}&prop=pageimages&format=json&pithumbsize=320&origin=*`);
+    const data = await res.json();
+    const pages = data.query.pages;
+    const page = pages[Object.keys(pages)[0]];
+    if (page && page.thumbnail && page.thumbnail.source) {
+      CACHE[title] = page.thumbnail.source;
+      imgEl.src = page.thumbnail.source;
+    }
+  } catch (e) {}
+}
 
 function draw(k = "") {
   const q = k.toLowerCase().trim();
@@ -195,20 +199,19 @@ function draw(k = "") {
         let vh = "";
         list.forEach(raw => {
           const [t, h, ms, tr, kp, ft] = raw.split("|");
-          const link = waLink("Halo PT Hasjrat Abadi Kotamobagu, saya tertarik dengan " + t + ". Bisa minta info promo & simulasi kreditnya?");
-          vh += `<details class="v"><summary><span>${t}</span><span class="pr">${h} ▾</span></summary><div class="sp"><table><tr><td>Estimasi OTR</td><td><b>${h}</b></td></tr><tr><td>Mesin</td><td>${ms}</td></tr><tr><td>Transmisi</td><td>${tr}</td></tr><tr><td>Kapasitas</td><td>${kp}</td></tr><tr><td>Fitur Utama</td><td>${ft}</td></tr></table><a class="wa" href="${link}" target="_blank" rel="noopener">Tanya Promo & Kredit via WhatsApp</a></div></details>`;
+          const msg = encodeURIComponent("Halo PT Hasjrat Abadi Kotamobagu, saya tertarik dengan " + t + ". Bisa minta info promo & simulasi kreditnya?");
+          vh += `<details class="v"><summary><span>${t}</span><span class="pr">${h} ▾</span></summary><div class="sp"><table><tr><td>Estimasi OTR</td><td><b>${h}</b></td></tr><tr><td>Mesin</td><td>${ms}</td></tr><tr><td>Transmisi</td><td>${tr}</td></tr><tr><td>Kapasitas</td><td>${kp}</td></tr><tr><td>Fitur Utama</td><td>${ft}</td></tr></table><a class="wa" href="https://wa.me{WA}?text=${msg}" target="_blank" rel="noopener">Tanya Promo & Kredit via WhatsApp</a></div></details>`;
         });
-        const photoUrl = getPhoto(m.f);
-        const fb = "https://placehold.co" + encodeURIComponent(m.n.replace("Toyota ", ""));
-        gh += `<details class="c" ${q ? "open" : ""}><summary><div class="cl"><img class="car-photo" src="${photoUrl}" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='${fb}'" alt="${m.n}"><div>${m.n}<span class="sb">Klik untuk melihat ${list.length} pilihan tipe</span></div></div><span class="ar">▼</span></summary><div class="vs"><div class="vh">Pilih jenis/tipe ${m.n}:</div>${varsOrEmpty(vh)}</div></details>`;
+        const fb = `https://placehold.co{encodeURIComponent(m.n.replace("Toyota ", ""))}`;
+        gh += `<details class="c" ${q ? "open" : ""}><summary><div class="cl"><img class="car-photo" data-wiki="${m.w}" src="${fb}" alt="${m.n}"><div>${m.n}<span class="sb">Klik untuk melihat ${list.length} pilihan tipe</span></div></div><span class="ar">▼</span></summary><div class="vs"><div class="vh">Pilih jenis/tipe ${m.n}:</div>${vh}</div></details>`;
       }
     });
     if (gh) out += `<div class="cat">${g.c}</div>${gh}`;
   });
   document.getElementById("list").innerHTML = out;
   document.getElementById("empty").style.display = total ? "none" : "block";
+  document.querySelectorAll("img[data-wiki]").forEach(img => loadWikiPhoto(img, img.dataset.wiki));
 }
-function varsOrEmpty(v) { return v || ""; }
 draw();
 </script>
 </body>
