@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
 <title>Katalog Toyota - PT Hasjrat Abadi Kotamobagu</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,sans-serif}
 body{background:#f4f5f7;color:#222;padding-bottom:3rem}
 .top{background:#9e000e;color:#fff;font-size:.85rem;padding:10px 1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.top a{background:#25d366;color:#fff;text-decoration:none;font-weight:700;padding:6px 14px;border-radius:20px;font-size:.82rem;cursor:pointer}
+.top a{background:#25d366;color:#fff;text-decoration:none;font-weight:700;padding:6px 14px;border-radius:20px;font-size:.82rem}
 .top a:hover{background:#1ebe5d}
 header{background:linear-gradient(135deg,#d90416,#a3000e);color:#fff;text-align:center;padding:2rem 1rem 2.5rem;margin-bottom:1.2rem}
 .badge{display:inline-block;background:#fff;color:#d90416;padding:4px 14px;border-radius:20px;font-weight:800;font-size:.82rem;margin-bottom:8px;text-transform:uppercase}
@@ -23,7 +24,7 @@ details.c>summary{list-style:none;padding:.85rem 1.1rem;display:flex;justify-con
 details.c>summary::-webkit-details-marker{display:none}
 details.c>summary:hover{background:#fff5f5}
 .cl{display:flex;align-items:center;gap:14px}
-.car-photo{width:105px;height:68px;object-fit:cover;border-radius:6px;background:#eee;border:1px solid #ddd;flex-shrink:0}
+.car-photo{width:105px;height:68px;object-fit:cover;border-radius:6px;background:#e9ecef;border:1px solid #ddd;flex-shrink:0}
 .sb{display:block;font-size:.8rem;font-weight:400;color:#666;margin-top:2px}
 .ar{color:#d90416;font-size:.95rem}
 .vs{background:#fafafa;border-top:1px solid #eee;padding:.9rem 1.1rem}
@@ -37,7 +38,7 @@ details.v>summary:hover{background:#fff0f1;color:#d90416}
 table{width:100%;border-collapse:collapse;font-size:.88rem;margin-bottom:12px}
 td{padding:6px 4px;border-bottom:1px solid #f0f0f0}
 td:first-child{font-weight:700;color:#555;width:35%}
-.wa{display:block;text-align:center;background:#25d366;color:#fff;text-decoration:none;font-weight:700;padding:11px;border-radius:6px;font-size:.92rem;cursor:pointer;border:none;width:100%}
+.wa{display:block;text-align:center;background:#25d366;color:#fff;text-decoration:none;font-weight:700;padding:11px;border-radius:6px;font-size:.92rem}
 .wa:hover{background:#1ebe5d}
 .empty{text-align:center;padding:2rem;color:#666;display:none}
 footer{text-align:center;margin-top:2.5rem;color:#777;font-size:.84rem;padding:0 1rem}
@@ -46,7 +47,7 @@ footer{text-align:center;margin-top:2.5rem;color:#777;font-size:.84rem;padding:0
 <body>
 <div class="top">
   <span>Dealer Resmi Toyota - Kotamobagu, Sulawesi Utara</span>
-  <a href="https://wa.me" onclick="openWA('Halo PT Hasjrat Abadi Kotamobagu, saya ingin bertanya info unit & promo mobil Toyota.'); return false;">Hubungi Sales WhatsApp</a>
+  <a id="topWa" href="https://whatsapp.com" target="_blank" rel="noopener">Hubungi Sales WhatsApp</a>
 </div>
 <header>
   <div class="badge">PT Hasjrat Abadi Kotamobagu</div>
@@ -63,19 +64,14 @@ footer{text-align:center;margin-top:2.5rem;color:#777;font-size:.84rem;padding:0
 <footer>&copy; 2026 PT Hasjrat Abadi Kotamobagu. Estimasi harga OTR dapat berubah sewaktu-waktu.</footer>
 <script>
 const WA = "628891261808";
-const IMG = "https://wikimedia.org";
+function waLink(pesan) {
+  return "https://whatsapp.com" + WA + "&text=" + encodeURIComponent(pesan);
+}
+document.getElementById("topWa").href = waLink("Halo PT Hasjrat Abadi Kotamobagu, saya ingin bertanya info unit & promo mobil Toyota.");
 
-function openWA(pesan) {
-  const text = encodeURIComponent(pesan);
-  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  if (isMobile) {
-    window.location.href = "whatsapp://send?phone=" + WA + "&text=" + text;
-    setTimeout(function() {
-      window.open("https://wa.me" + WA + "?text=" + text, "_blank");
-    }, 800);
-  } else {
-    window.open("https://whatsapp.com" + WA + "&text=" + text, "_blank");
-  }
+function getPhoto(fileName) {
+  const rawUrl = "https://wikimedia.org" + encodeURIComponent(fileName);
+  return "https://wsrv.nl" + encodeURIComponent(rawUrl) + "&w=300&h=200&fit=cover&output=webp";
 }
 
 const DATA = [
@@ -199,11 +195,12 @@ function draw(k = "") {
         let vh = "";
         list.forEach(raw => {
           const [t, h, ms, tr, kp, ft] = raw.split("|");
-          const msg = `Halo PT Hasjrat Abadi Kotamobagu, saya tertarik dengan ${t}. Bisa minta info promo & simulasi kreditnya?`.replace(/'/g, "");
-          vh += `<details class="v"><summary><span>${t}</span><span class="pr">${h} ▾</span></summary><div class="sp"><table><tr><td>Estimasi OTR</td><td><b>${h}</b></td></tr><tr><td>Mesin</td><td>${ms}</td></tr><tr><td>Transmisi</td><td>${tr}</td></tr><tr><td>Kapasitas</td><td>${kp}</td></tr><tr><td>Fitur Utama</td><td>${ft}</td></tr></table><button class="wa" onclick="openWA('${msg}')">Tanya Promo & Kredit via WhatsApp</button></div></details>`;
+          const link = waLink("Halo PT Hasjrat Abadi Kotamobagu, saya tertarik dengan " + t + ". Bisa minta info promo & simulasi kreditnya?");
+          vh += `<details class="v"><summary><span>${t}</span><span class="pr">${h} ▾</span></summary><div class="sp"><table><tr><td>Estimasi OTR</td><td><b>${h}</b></td></tr><tr><td>Mesin</td><td>${ms}</td></tr><tr><td>Transmisi</td><td>${tr}</td></tr><tr><td>Kapasitas</td><td>${kp}</td></tr><tr><td>Fitur Utama</td><td>${ft}</td></tr></table><a class="wa" href="${link}" target="_blank" rel="noopener">Tanya Promo & Kredit via WhatsApp</a></div></details>`;
         });
-        const photoUrl = IMG + m.f + "?width=320";
-        gh += `<details class="c" ${q ? "open" : ""}><summary><div class="cl"><img class="car-photo" src="${photoUrl}" loading="lazy" alt="${m.n}"><div>${m.n}<span class="sb">Klik untuk melihat ${list.length} pilihan tipe</span></div></div><span class="ar">▼</span></summary><div class="vs"><div class="vh">Pilih jenis/tipe ${m.n}:</div>${vh}</div></details>`;
+        const photoUrl = getPhoto(m.f);
+        const fb = "https://placehold.co" + encodeURIComponent(m.n.replace("Toyota ", ""));
+        gh += `<details class="c" ${q ? "open" : ""}><summary><div class="cl"><img class="car-photo" src="${photoUrl}" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='${fb}'" alt="${m.n}"><div>${m.n}<span class="sb">Klik untuk melihat ${list.length} pilihan tipe</span></div></div><span class="ar">▼</span></summary><div class="vs"><div class="vh">Pilih jenis/tipe ${m.n}:</div>${varsOrEmpty(vh)}</div></details>`;
       }
     });
     if (gh) out += `<div class="cat">${g.c}</div>${gh}`;
@@ -211,6 +208,7 @@ function draw(k = "") {
   document.getElementById("list").innerHTML = out;
   document.getElementById("empty").style.display = total ? "none" : "block";
 }
+function varsOrEmpty(v) { return v || ""; }
 draw();
 </script>
 </body>
